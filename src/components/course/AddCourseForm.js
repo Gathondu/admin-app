@@ -5,7 +5,7 @@ let courseTitle = React.createRef();
 let courseDescription = React.createRef();
 const AddCourseForm = ({addCourse}) => {
     let handleSubmit = (e) => {
-        e.preventDefault();
+        if (e) e.preventDefault();
         addCourse(courseTitle.current.value, courseDescription.current.value);
         e.currentTarget.reset();
     };
