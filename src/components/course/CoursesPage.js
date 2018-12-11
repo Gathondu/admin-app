@@ -20,11 +20,10 @@ class CoursesPage extends Component {
             />
         ));
         return (
-            <>
-                <h1>{this.props.title}</h1>
-                {courseComponents}
-                <AddCourseForm addCourse={addCourse}/>
-            </>
+            [
+                <h1>{this.props.title}</h1>,
+                [courseComponents],
+                <AddCourseForm addCourse={addCourse}/>]
         );
     }
 }

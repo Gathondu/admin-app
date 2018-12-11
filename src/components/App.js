@@ -23,7 +23,7 @@ class App extends Component {
             <BrowserRouter>
                 <div className="container">
                     <Header/>
-                    <Route exact path="/" render={() => <HomePage title="Administration"  addCourse={addCourse}/>}/>
+                    <Route exact path="/" render={() => <HomePage title="Administration" />}/>
                     <Route path="/courses" render={() =>
                         <CoursesPage title="Courses"
                                      courses={courses}

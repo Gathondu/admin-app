@@ -11,8 +11,8 @@ const AddCourseForm = ({addCourse}) => {
     };
 
     return (
-        <>
-        <h2>Add Course</h2>
+        [
+        <h2>Add Course</h2>,
         <form onSubmit={handleSubmit}>
             <input
                 type="text"
@@ -26,7 +26,7 @@ const AddCourseForm = ({addCourse}) => {
                 type="submit"
                 value="Save"/>
         </form>
-        </>
+        ]
     );
 };
 

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const Course = ({title, description, index, removeCourse}) => {
     return (
-        <div className="course" key={index}>
+        <div className="course">
             <span className="course-title">
                 <button className="remove-course" onClick={() => removeCourse(index)}>×</button>
                 {title}
