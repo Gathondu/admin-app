@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 let courseTitle = React.createRef();
 let courseDescription = React.createRef();
-const AddCourseForm = ({addCourse}) => {
+const AddCourseForm = ({addCourse, title}) => {
     let handleSubmit = (e) => {
         if (e) e.preventDefault();
         addCourse(courseTitle.current.value, courseDescription.current.value);
@@ -12,8 +12,8 @@ const AddCourseForm = ({addCourse}) => {
 
     return (
         [
-        <h2>Add Course</h2>,
-        <form onSubmit={handleSubmit}>
+        <h2 key="title">{title}</h2>,
+        <form onSubmit={handleSubmit} key="form">
             <input
                 type="text"
                 placeholder="Course Title"
@@ -31,7 +31,10 @@ const AddCourseForm = ({addCourse}) => {
 };
 
 AddCourseForm.propTypes = {
-    addCourse: PropTypes.func.isRequired
+    addCourse: PropTypes.func.isRequired,
+    title:PropTypes.string.isRequired
 };
-
+AddCourseForm.defaultProps = {
+    title: "Add Course"
+};
 export default AddCourseForm;

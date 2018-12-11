@@ -21,9 +21,9 @@ class CoursesPage extends Component {
         ));
         return (
             [
-                <h1>{this.props.title}</h1>,
+                <h1 key="title">{this.props.title}</h1>,
                 [courseComponents],
-                <AddCourseForm addCourse={addCourse}/>]
+                <AddCourseForm key="form" addCourse={addCourse}/>]
         );
     }
 }
