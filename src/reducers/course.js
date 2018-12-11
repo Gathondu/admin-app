@@ -1,27 +1,20 @@
 import * as CourseActionTypes from '../actionTypes/course'
 
-const initialState = [
-    {
-        title: 'React',
-        description: `This course get's you up to speed with React.`
-    }
-];
 
-export default function Course(state=initialState, action) {
+export default function Course(state=[], action) {
     switch (action.type) {
         case CourseActionTypes.ADD_COURSE:
             return [
                 ...state,
-                {
-                    title: action.title,
-                    description: action.description
-                }
+                action.course
             ];
         case CourseActionTypes.REMOVE_COURSE:
             return [
                 ...state.splice(0, action.index),
                 ...state.splice(action.index + 1)
             ];
+        case CourseActionTypes.LOAD_COURSES_SUCCESS:
+            return action.courses;
         default:
             return state;
     }

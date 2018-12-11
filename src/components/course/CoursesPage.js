@@ -1,28 +1,20 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import AddCourseForm from "./AddCourseForm";
-import Course from './Course';
+import CourseList from './CourseList';
 
 class CoursesPage extends Component {
     render() {
         const {
+            title,
             courses,
             addCourse,
             removeCourse
         } = this.props;
-        const courseComponents = courses.map((course, index) => (
-            <Course
-                title={course.title}
-                description={course.description}
-                key={index}
-                index={index}
-                removeCourse={removeCourse}
-            />
-        ));
         return (
             [
-                <h1 key="title">{this.props.title}</h1>,
-                [courseComponents],
+                <h1 key="title">{title}</h1>,
+                <CourseList key="course-list" courses={courses} removeCourse={removeCourse}/>,
                 <AddCourseForm key="form" addCourse={addCourse}/>]
         );
     }
@@ -33,6 +25,9 @@ CoursesPage.propTypes = {
     courses:PropTypes.array.isRequired,
     addCourse: PropTypes.func.isRequired,
     removeCourse: PropTypes.func.isRequired
+};
+CoursesPage.defaultProps = {
+    title: "Courses"
 };
 
 export default CoursesPage;

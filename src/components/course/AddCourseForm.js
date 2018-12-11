@@ -3,10 +3,11 @@ import PropTypes from 'prop-types';
 
 let courseTitle = React.createRef();
 let courseDescription = React.createRef();
+let course = {};
 const AddCourseForm = ({addCourse, title}) => {
     let handleSubmit = (e) => {
         if (e) e.preventDefault();
-        addCourse(courseTitle.current.value, courseDescription.current.value);
+        addCourse(course);
         e.currentTarget.reset();
     };
 

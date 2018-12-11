@@ -3,12 +3,14 @@ import ReactDOM from 'react-dom';
 import {Provider} from "react-redux";
 import configureStore from "./store";
 import App from "./components/App";
+import {loadCourses} from "./actions/course";
 import './styles/global.css';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import * as serviceWorker from './serviceWorker';
 
 
 const store = configureStore();
+store.dispatch(loadCourses());
 ReactDOM.render(
     <Provider store={store}>
         <App />
