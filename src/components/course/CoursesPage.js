@@ -1,21 +1,27 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import CourseForm from "./CourseForm";
 import CourseList from './CourseList';
+import history from '../common/History'
 
 class CoursesPage extends Component {
+    redirectToAddCoursePage = () => {
+      history.push('/course');
+    };
     render() {
         const {
             title,
             courses,
-            addCourse,
             removeCourse
         } = this.props;
         return (
             [
                 <h1 key="title">{title}</h1>,
+                <input key="submit" type="submit"
+                        value="Add Course"
+                        className="btn btn-primary"
+                        onClick={this.redirectToAddCoursePage}/>,
                 <CourseList key="course-list" courses={courses} removeCourse={removeCourse}/>,
-                <CourseForm key="form" addCourse={addCourse}/>]
+            ]
         );
     }
 }
@@ -23,7 +29,6 @@ class CoursesPage extends Component {
 CoursesPage.propTypes = {
     title: PropTypes.string.isRequired,
     courses:PropTypes.array.isRequired,
-    addCourse: PropTypes.func.isRequired,
     removeCourse: PropTypes.func.isRequired
 };
 CoursesPage.defaultProps = {

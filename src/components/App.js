@@ -2,13 +2,14 @@ import React, { Component } from 'react';
 import {connect} from "react-redux";
 import PropTypes from "prop-types";
 import {bindActionCreators} from "redux";
-import {BrowserRouter, Route} from "react-router-dom";
+import {Router, Route} from "react-router-dom";
 import HomePage from "./home/HomePage";
 import AboutPage from "./about/AboutPage";
 import Header from "./common/Header";
 import CoursesPage from "./course/CoursesPage";
 import ManageCoursePage from './course/ManageCoursePage';
 import * as CourseActionCreators from '../actions/course'
+import history from './common/History'
 
 class App extends Component {
     static propTypes = {
@@ -21,7 +22,7 @@ class App extends Component {
         const removeCourse = bindActionCreators(CourseActionCreators.deleteCourseSuccess, dispatch);
 
         return (
-            <BrowserRouter>
+            <Router history={history}>
                 <div className="container">
                     <Header/>
                     <Route exact path="/" render={() => <HomePage title="Administration" />}/>
@@ -35,7 +36,7 @@ class App extends Component {
                     <Route path="/course/:id" render={() => <ManageCoursePage />}/>
                     <Route path="/about" render={() => <AboutPage title="About"/>}/>
                 </div>
-            </BrowserRouter>
+            </Router>
         );
     }
 }
