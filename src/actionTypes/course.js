@@ -1,3 +1,4 @@
-export const ADD_COURSE = 'course/ADD_COURSE';
-export const REMOVE_COURSE = 'course/REMOVE_COURSE';
+export const CREATE_COURSE_SUCCESS = 'course/CREATE_COURSE_SUCCESS';
+export const DELETE_COURSE_SUCCESS = 'course/DELETE_COURSE_SUCCESS';
 export const LOAD_COURSES_SUCCESS = 'course/LOAD_COURSES_SUCCESS';
+export const UPDATE_COURSE_SUCCESS = 'course/UPDATE_COURSE_SUCCESS';

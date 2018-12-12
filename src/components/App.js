@@ -17,8 +17,8 @@ class App extends Component {
 
     render() {
         const { dispatch, courses} = this.props;
-        const addCourse = bindActionCreators(CourseActionCreators.addCourse, dispatch);
-        const removeCourse = bindActionCreators(CourseActionCreators.removeCourse, dispatch);
+        const addCourse = bindActionCreators(CourseActionCreators.createCourseSuccess, dispatch);
+        const removeCourse = bindActionCreators(CourseActionCreators.deleteCourseSuccess, dispatch);
 
         return (
             <BrowserRouter>
@@ -31,7 +31,7 @@ class App extends Component {
                                      addCourse={addCourse}
                                      removeCourse={removeCourse}
                         />}/>
-                    <Route path="/course" render={() => <ManageCoursePage />}/>
+                    <Route exact path="/course" render={() => <ManageCoursePage />}/>
                     <Route path="/course/:id" render={() => <ManageCoursePage />}/>
                     <Route path="/about" render={() => <AboutPage title="About"/>}/>
                 </div>
