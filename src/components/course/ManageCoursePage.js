@@ -17,6 +17,11 @@ class ManageCoursePage extends Component {
     course: Object.assign({}, this.props.course),
     errors: {}
   };
+  componentWillReceiveProps(nextProps) {
+    if(this.props.course.id !== nextProps.course.id){
+      this.setState({course: Object.assign({}, nextProps.course)})
+    }
+  }
 
   updateCoursesState = e => {
     const field = e.target.name;
@@ -34,7 +39,6 @@ class ManageCoursePage extends Component {
   render() {
     return (
       <CourseForm
-        history={this.state.history}
         course={this.state.course}
         errors={this.state.errors}
         allAuthors={this.props.authors}
@@ -47,7 +51,7 @@ class ManageCoursePage extends Component {
 
 const getCourseById = (courses, id) => {
   const course = courses.filter(course => course.id === id);
-  if (course) return course[0];
+  if (course.length) return course[0];
   return null;
 };
 const mapStateToProps = (state, ownProps) => {
@@ -60,7 +64,7 @@ const mapStateToProps = (state, ownProps) => {
     length: "",
     category: ""
   };
-  if (courseId) {
+  if (courseId && state.courses.length > 0) {
     course = getCourseById(state.courses, courseId);
   }
   const authorsFormattedForDropdown = state.authors.map(author => {
