@@ -11,7 +11,8 @@ function actionTypeEndsInSuccess(type) {
 export default function AjaxStatus(state=initialState.ajaxCallInProgress, action) {
     if (action.type === AjaxStatusActions.BEGIN_AJAX_CALL) {
         return state + 1;
-    } else if (actionTypeEndsInSuccess(action.type)) {
+    } else if (action.type=== AjaxStatusActions.AJAX_CALL_ERROR ||
+        actionTypeEndsInSuccess(action.type)) {
         return state - 1;
     }
     return state;
