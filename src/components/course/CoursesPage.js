@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import AddCourseForm from "./AddCourseForm";
+import CourseForm from "./CourseForm";
 import CourseList from './CourseList';
 
 class CoursesPage extends Component {
@@ -15,7 +15,7 @@ class CoursesPage extends Component {
             [
                 <h1 key="title">{title}</h1>,
                 <CourseList key="course-list" courses={courses} removeCourse={removeCourse}/>,
-                <AddCourseForm key="form" addCourse={addCourse}/>]
+                <CourseForm key="form" addCourse={addCourse}/>]
         );
     }
 }

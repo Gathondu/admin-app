@@ -7,6 +7,7 @@ import HomePage from "./home/HomePage";
 import AboutPage from "./about/AboutPage";
 import Header from "./common/Header";
 import CoursesPage from "./course/CoursesPage";
+import ManageCoursePage from './course/ManageCoursePage';
 import * as CourseActionCreators from '../actions/course'
 
 class App extends Component {
@@ -30,6 +31,8 @@ class App extends Component {
                                      addCourse={addCourse}
                                      removeCourse={removeCourse}
                         />}/>
+                    <Route path="/course" render={() => <ManageCoursePage />}/>
+                    <Route path="/course/:id" render={() => <ManageCoursePage />}/>
                     <Route path="/about" render={() => <AboutPage title="About"/>}/>
                 </div>
             </BrowserRouter>
