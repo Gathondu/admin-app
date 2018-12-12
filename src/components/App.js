@@ -2,14 +2,13 @@ import React, { Component } from 'react';
 import {connect} from "react-redux";
 import PropTypes from "prop-types";
 import {bindActionCreators} from "redux";
-import {Router, Route} from "react-router-dom";
+import {BrowserRouter, Route} from "react-router-dom";
 import HomePage from "./home/HomePage";
 import AboutPage from "./about/AboutPage";
 import Header from "./common/Header";
 import CoursesPage from "./course/CoursesPage";
 import ManageCoursePage from './course/ManageCoursePage';
 import * as CourseActionCreators from '../actions/course'
-import history from './common/History'
 
 class App extends Component {
     static propTypes = {
@@ -22,21 +21,22 @@ class App extends Component {
         const removeCourse = bindActionCreators(CourseActionCreators.deleteCourseSuccess, dispatch);
 
         return (
-            <Router history={history}>
+            <BrowserRouter>
                 <div className="container">
                     <Header/>
                     <Route exact path="/" render={() => <HomePage title="Administration" />}/>
-                    <Route path="/courses" render={() =>
-                        <CoursesPage title="Courses"
+                    <Route path="/courses" render={(props) =>
+                        <CoursesPage {...props}
+                                     title="Courses"
                                      courses={courses}
                                      addCourse={addCourse}
                                      removeCourse={removeCourse}
                         />}/>
-                    <Route exact path="/course" render={() => <ManageCoursePage />}/>
-                    <Route path="/course/:id" render={() => <ManageCoursePage />}/>
+                    <Route exact path="/course" render={(props) => <ManageCoursePage {...props}/>}/>
+                    <Route path="/course/:id" render={(props) => <ManageCoursePage {...props}/>}/>
                     <Route path="/about" render={() => <AboutPage title="About"/>}/>
                 </div>
-            </Router>
+            </BrowserRouter>
         );
     }
 }

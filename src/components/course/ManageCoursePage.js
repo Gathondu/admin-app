@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { bindActionCreators } from "redux";
-import history from '../common/History'
 
 import * as courseActions from "../../actions/course";
 //import * as authorActions from "../../actions/author";
@@ -21,7 +20,7 @@ class ManageCoursePage extends Component {
 
   updateCoursesState = e => {
     const field = e.target.name;
-    let course = Object.assign({},this.state.course);
+    let course = Object.assign({}, this.state.course);
     course[field] = e.target.value;
     return this.setState({ course: course });
   };
@@ -29,12 +28,13 @@ class ManageCoursePage extends Component {
   saveCourse = e => {
     e.preventDefault();
     this.props.actions.saveCourse(this.state.course);
-    history.push('/courses');
+    this.props.history.push("/courses");
   };
 
   render() {
     return (
       <CourseForm
+        history={this.state.history}
         course={this.state.course}
         errors={this.state.errors}
         allAuthors={this.props.authors}
@@ -45,9 +45,13 @@ class ManageCoursePage extends Component {
   }
 }
 
-
-
-const mapStateToProps = state => {
+const getCourseById = (courses, id) => {
+  const course = courses.filter(course => course.id === id);
+  if (course) return course[0];
+  return null;
+};
+const mapStateToProps = (state, ownProps) => {
+  const courseId = ownProps.match.params.id; // get this from path `/course/:id`
   let course = {
     id: "",
     watchHref: "",
@@ -56,7 +60,9 @@ const mapStateToProps = state => {
     length: "",
     category: ""
   };
-
+  if (courseId) {
+    course = getCourseById(state.courses, courseId);
+  }
   const authorsFormattedForDropdown = state.authors.map(author => {
     return {
       value: author.id,

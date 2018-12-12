@@ -1,11 +1,10 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import CourseList from './CourseList';
-import history from '../common/History'
 
 class CoursesPage extends Component {
     redirectToAddCoursePage = () => {
-      history.push('/course');
+      this.props.history.push('/course');
     };
     render() {
         const {
