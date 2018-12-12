@@ -8,6 +8,7 @@ import { loadAuthors } from "./actions/author";
 import "./styles/global.css";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "../node_modules/toastr/build/toastr.min.css";
+import '../node_modules/font-awesome/css/font-awesome.min.css'
 import * as serviceWorker from "./serviceWorker";
 
 const store = configureStore();

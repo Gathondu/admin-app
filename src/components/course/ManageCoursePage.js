@@ -5,7 +5,6 @@ import { bindActionCreators } from "redux";
 import toastr from "toastr";
 
 import * as courseActions from "../../actions/course";
-//import * as authorActions from "../../actions/author";
 import CourseForm from "./CourseForm";
 
 class ManageCoursePage extends Component {

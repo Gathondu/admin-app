@@ -2,19 +2,20 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import CourseListRow from "./CourseListRow";
 
-const CourseList = ({courses, removeCourse}) => {
+const CourseList = ({courses, deleteCourse}) => {
     const courseRows = courses.map((course, index) => (
         <CourseListRow
             course={course}
             key={course.id}
             index={index}
-            removeCourse={removeCourse}
+            deleteCourse={deleteCourse}
         />
     ));
     return (
         <table className="table">
             <thead>
                 <tr>
+                    <th>&nbsp;</th>
                     <th>&nbsp;</th>
                     <th>Title</th>
                     <th>Author</th>
@@ -29,7 +30,7 @@ const CourseList = ({courses, removeCourse}) => {
 
 CourseList.propTypes = {
     courses: PropTypes.array.isRequired,
-    removeCourse: PropTypes.func.isRequired
+    deleteCourse: PropTypes.func.isRequired
 };
 
 export default CourseList;

@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import {connect} from "react-redux";
 import PropTypes from "prop-types";
-import {bindActionCreators} from "redux";
 import {BrowserRouter, Route} from "react-router-dom";
 import HomePage from "./home/HomePage";
 import AboutPage from "./about/AboutPage";
 import Header from "./common/Header";
 import CoursesPage from "./course/CoursesPage";
 import ManageCoursePage from './course/ManageCoursePage';
-import * as CourseActionCreators from '../actions/course'
+import {bindActionCreators} from "redux";
+import * as CourseActions from '../actions/course';
 
 class App extends Component {
     static propTypes = {
@@ -17,10 +17,8 @@ class App extends Component {
     };
 
     render() {
-        const { dispatch, courses, loading} = this.props;
-        const addCourse = bindActionCreators(CourseActionCreators.createCourseSuccess, dispatch);
-        const removeCourse = bindActionCreators(CourseActionCreators.deleteCourseSuccess, dispatch);
-
+        const { courses, loading, dispatch} = this.props;
+        const deleteCourse = bindActionCreators(CourseActions.deleteCourse, dispatch);
         return (
             <BrowserRouter>
                 <div className="container">
@@ -30,9 +28,8 @@ class App extends Component {
                         <CoursesPage {...props}
                                      title="Courses"
                                      courses={courses}
-                                     addCourse={addCourse}
-                                     removeCourse={removeCourse}
-                        />}/>
+                                     deleteCourse={deleteCourse}/>}
+                    />
                     <Route exact path="/course" render={(props) => <ManageCoursePage {...props}/>}/>
                     <Route path="/course/:id" render={(props) => <ManageCoursePage {...props}/>}/>
                     <Route path="/about" render={() => <AboutPage title="About"/>}/>

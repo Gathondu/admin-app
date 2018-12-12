@@ -1,13 +1,14 @@
 import * as CourseActionTypes from '../actionTypes/course'
 import courseApi from "../api/mockCourse";
 import {ajaxCallError, beginAjaxCall} from "./ajaxStatus";
+import toastr from 'toastr';
 
 export const createCourseSuccess = course => {
     return { type: CourseActionTypes.CREATE_COURSE_SUCCESS, course }
 };
 
-export const deleteCourseSuccess = index => {
-   return { type: CourseActionTypes.DELETE_COURSE_SUCCESS, index }
+export const deleteCourseSuccess = id => {
+   return { type: CourseActionTypes.DELETE_COURSE_SUCCESS, id }
 };
 
 export const loadCoursesSuccess = courses => {
@@ -39,4 +40,13 @@ export function saveCourse(course) {
             dispatch(ajaxCallError(error));
             throw(error)});
     };
+}
+
+export function deleteCourse(id) {
+    return function (dispatch) {
+        dispatch(deleteCourseSuccess(id));
+        return courseApi.deleteCourse(id)
+            .then(toastr.success('Course Deleted.'))
+            .catch(error => {throw (error)});
+    }
 }

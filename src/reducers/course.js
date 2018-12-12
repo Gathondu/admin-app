@@ -7,8 +7,7 @@ export default function Course(state = initialState.courses, action) {
       return [...state, action.course];
     case CourseActionTypes.DELETE_COURSE_SUCCESS:
       return [
-        ...state.splice(0, action.index),
-        ...state.splice(action.index + 1)
+          ...state.filter(course => course.id !== action.id)
       ];
     case CourseActionTypes.LOAD_COURSES_SUCCESS:
       return action.courses;
