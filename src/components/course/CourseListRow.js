@@ -6,7 +6,7 @@ const CourseListRow = ({course, deleteCourse}) => {
     return (
         <tr>
             <td><i className="fa fa-trash" onClick={() => deleteCourse(course.id)}/></td>
-            <td><a href={course.watchHref} target="_blank" rel="noopener noreferrer">Watch</a></td>
+            <td><a href={course.watchHref} target="_blank" rel="noopener noreferrer"><i className="fa fa-television"/></a></td>
             <td><Link to={`/course/${course.id}`}>{course.title}</Link></td>
             <td>{course.authorId}</td>
             <td>{course.category}</td>

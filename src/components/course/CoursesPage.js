@@ -7,7 +7,7 @@ class CoursesPage extends Component {
     this.props.history.push("/course");
   };
   render() {
-    const { title, courses, deleteCourse} = this.props;
+    const { title, courses, deleteCourse, loading } = this.props;
     return [
       <h1 key="title">{title}</h1>,
       <input
@@ -17,7 +17,12 @@ class CoursesPage extends Component {
         className="btn btn-primary"
         onClick={this.redirectToAddCoursePage}
       />,
-      <CourseList key="course-list" courses={courses} deleteCourse={deleteCourse}/>
+      <CourseList
+        key="course-list"
+        courses={courses}
+        deleteCourse={deleteCourse}
+        loading={loading}
+      />
     ];
   }
 }
@@ -25,7 +30,8 @@ class CoursesPage extends Component {
 CoursesPage.propTypes = {
   title: PropTypes.string.isRequired,
   courses: PropTypes.array.isRequired,
-  deleteCourse: PropTypes.func.isRequired
+  deleteCourse: PropTypes.func.isRequired,
+  loading: PropTypes.bool
 };
 CoursesPage.defaultProps = {
   title: "Courses"

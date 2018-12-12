@@ -28,7 +28,7 @@ class App extends Component {
                         <CoursesPage {...props}
                                      title="Courses"
                                      courses={courses}
-                                     deleteCourse={deleteCourse}/>}
+                                     deleteCourse={deleteCourse} loading={loading} />}
                     />
                     <Route exact path="/course" render={(props) => <ManageCoursePage {...props}/>}/>
                     <Route path="/course/:id" render={(props) => <ManageCoursePage {...props}/>}/>
