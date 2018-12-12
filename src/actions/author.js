@@ -1,5 +1,6 @@
 import * as AuthorActionTypes from "../actionTypes/author";
 import AuthorApi from "../api/mockAuthor";
+import {beginAjaxCall} from './ajaxStatus';
 
 export const addAuthor = author => {
   return { type: AuthorActionTypes.ADD_AUTHOR, author };
@@ -15,8 +16,8 @@ export const loadAuthorsSuccess = authors => {
 
 export function loadAuthors() {
   return function(dispatch) {
-    return AuthorApi
-      .getAllAuthors()
+    dispatch(beginAjaxCall());
+    return AuthorApi.getAllAuthors()
       .then(authors => {
         dispatch(loadAuthorsSuccess(authors));
       })

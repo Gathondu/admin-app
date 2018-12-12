@@ -12,18 +12,19 @@ import * as CourseActionCreators from '../actions/course'
 
 class App extends Component {
     static propTypes = {
-        courses: PropTypes.array.isRequired
+        courses: PropTypes.array.isRequired,
+        loading: PropTypes.bool.isRequired
     };
 
     render() {
-        const { dispatch, courses} = this.props;
+        const { dispatch, courses, loading} = this.props;
         const addCourse = bindActionCreators(CourseActionCreators.createCourseSuccess, dispatch);
         const removeCourse = bindActionCreators(CourseActionCreators.deleteCourseSuccess, dispatch);
 
         return (
             <BrowserRouter>
                 <div className="container">
-                    <Header/>
+                    <Header loading={loading}/>
                     <Route exact path="/" render={() => <HomePage title="Administration" />}/>
                     <Route path="/courses" render={(props) =>
                         <CoursesPage {...props}
@@ -41,7 +42,7 @@ class App extends Component {
     }
 }
 const mapStateToProps = state => (
-    {courses: state.courses}
+    {courses: state.courses, loading: state.ajaxCallsInProgress > 0}
 );
 
 export default connect(mapStateToProps)(App);
