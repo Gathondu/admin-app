@@ -13,6 +13,7 @@ import * as CourseActions from '../actions/course';
 import * as AuthorActions from '../actions/authors';
 import AuthorsPage from "./author/AuthorsPage";
 import ManageAuthorPage from "./author/ManageAuthorPage";
+import toastr from 'toastr';
 
 class App extends Component {
     static propTypes = {
@@ -26,6 +27,12 @@ class App extends Component {
         const { courses, loading, dispatch, totalCourses, totalAuthors, authors} = this.props;
         const deleteCourse = bindActionCreators(CourseActions.deleteCourse, dispatch);
         const deleteAuthor = bindActionCreators(AuthorActions.deleteAuthor, dispatch);
+        const handleDeleteAuthor = authorId => {
+            const authorToDelete = courses.filter(course => course.authorId === authorId);
+            (authorToDelete.length > 0)
+                ? toastr.error('Cannot delete Author.They have a registered course.')
+                : deleteAuthor(authorId)
+        };
         return (
             <BrowserRouter>
                 <div className="container">
@@ -35,7 +42,7 @@ class App extends Component {
                         <Route exact path="/authors" render={(props) =>
                             <AuthorsPage {...props}
                                          authors={authors}
-                                         deleteAuthor={deleteAuthor}
+                                         deleteAuthor={handleDeleteAuthor}
                                          loading={loading}/>}/>
                         <Route exact path="/author" render={(props) => <ManageAuthorPage {...props}/>}/>
                         <Route exact path="/author/:id" render={(props) => <ManageAuthorPage {...props}/>}/>
@@ -55,6 +62,7 @@ class App extends Component {
     }
 }
 const mapStateToProps = state => (
+
     {
         courses: state.courses,
         authors: state.authors,
