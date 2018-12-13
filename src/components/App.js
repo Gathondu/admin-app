@@ -12,6 +12,7 @@ import {bindActionCreators} from "redux";
 import * as CourseActions from '../actions/course';
 import * as AuthorActions from '../actions/authors';
 import AuthorsPage from "./author/AuthorsPage";
+import ManageAuthorPage from "./author/ManageAuthorPage";
 
 class App extends Component {
     static propTypes = {
@@ -36,6 +37,8 @@ class App extends Component {
                                          authors={authors}
                                          deleteAuthor={deleteAuthor}
                                          loading={loading}/>}/>
+                        <Route exact path="/author" render={(props) => <ManageAuthorPage {...props}/>}/>
+                        <Route exact path="/author/:id" render={(props) => <ManageAuthorPage {...props}/>}/>
                         <Route exact path="/courses" render={(props) =>
                             <CoursesPage {...props}
                                          courses={courses}

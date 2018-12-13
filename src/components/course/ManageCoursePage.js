@@ -4,7 +4,6 @@ import { Prompt } from "react-router-dom";
 import PropTypes from "prop-types";
 import { bindActionCreators } from "redux";
 import toastr from "toastr";
-
 import * as courseActions from "../../actions/course";
 import CourseForm from "./CourseForm";
 
@@ -16,7 +15,7 @@ class ManageCoursePage extends Component {
   };
   state = {
     course: Object.assign({}, this.props.course),
-    saving: false,
+    loading: false,
     errors: { title: "", author: "", category: "", length: "" },
     formIsValid: false,
     titleValid: false,
@@ -98,7 +97,7 @@ class ManageCoursePage extends Component {
 
   saveCourse = e => {
     e.preventDefault();
-    this.setState({ saving: true });
+    this.setState({ loading: true });
     this.validateInput(this.state.course);
     if (this.state.formIsValid) {
       this.setState({ formUpdated: false });
@@ -106,14 +105,14 @@ class ManageCoursePage extends Component {
         .saveCourse(this.state.course)
         .then(() => this.redirect())
         .catch(error => {
-          this.setState({ saving: false });
+          this.setState({ loading: false });
           toastr.error(error);
         });
     }
   };
 
   redirect = () => {
-    this.setState({ saving: false });
+    this.setState({ loading: false });
     toastr.success("Course Saved.");
     this.props.history.push("/courses");
   };
@@ -132,7 +131,7 @@ class ManageCoursePage extends Component {
         allAuthors={this.props.authors}
         onChange={this.updateCoursesState}
         onSave={this.saveCourse}
-        loading={this.state.saving}
+        loading={this.state.loading}
         formIsValid={this.state.formIsValid}
       />
     ];

@@ -46,7 +46,7 @@ export function saveAuthor(author) {
   return function(dispatch) {
     dispatch(beginAjaxCall());
     return AuthorApi
-        .saveCourse(author)
+        .saveAuthor(author)
         .then(savedAuthor => {
           if (author.id) {
             dispatch(updateAuthorSuccess(savedAuthor));
