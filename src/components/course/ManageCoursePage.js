@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Prompt } from "react-router-dom";
 import PropTypes from "prop-types";
 import { bindActionCreators } from "redux";
 import toastr from "toastr";
@@ -21,12 +22,19 @@ class ManageCoursePage extends Component {
     titleValid: false,
     authorValid: false,
     categoryValid: false,
-    lengthValid: false
+    lengthValid: false,
+    formUpdated: false
   };
   componentWillReceiveProps(nextProps) {
     if (this.props.course.id !== nextProps.course.id) {
       this.setState({ course: Object.assign({}, nextProps.course) });
     }
+  }
+  shouldComponentUpdate(nextProps, nextState, nextContext) {
+    if (this.state.course !== nextState.course) {
+      this.setState({ formUpdated: true });
+    }
+    return true;
   }
 
   validateInput = course => {
@@ -76,7 +84,7 @@ class ManageCoursePage extends Component {
     if (Object.keys(errors).length > 0) {
       this.setState({ errors: errors });
     } else {
-      this.setState({ errors: {},formIsValid: true });
+      this.setState({ errors: {}, formIsValid: true });
     }
   };
 
@@ -93,6 +101,7 @@ class ManageCoursePage extends Component {
     this.setState({ saving: true });
     this.validateInput(this.state.course);
     if (this.state.formIsValid) {
+      this.setState({ formUpdated: false });
       this.props.actions
         .saveCourse(this.state.course)
         .then(() => this.redirect())
@@ -110,8 +119,14 @@ class ManageCoursePage extends Component {
   };
 
   render() {
-    return (
+    return [
+      <Prompt
+        key="prompt"
+        when={this.state.formUpdated}
+        message="The form isn't saved, are you sure you want to leave the page?"
+      />,
       <CourseForm
+        key="form"
         course={this.state.course}
         errors={this.state.errors}
         allAuthors={this.props.authors}
@@ -120,7 +135,7 @@ class ManageCoursePage extends Component {
         loading={this.state.saving}
         formIsValid={this.state.formIsValid}
       />
-    );
+    ];
   }
 }
 
