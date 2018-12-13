@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import CourseListRow from "./CourseListRow";
 import LoadingDots from '../common/LoadingDots'
+import EmptyPage from '../common/EmptyPage'
 
 const CourseList = ({ courses, deleteCourse, loading }) => {
   const courseRows = courses.map((course, index) => (
@@ -29,7 +30,7 @@ const CourseList = ({ courses, deleteCourse, loading }) => {
       </table>
     );
   } else if (!loading) {
-    return <h3>There are no courses currently available.</h3>;
+    return <EmptyPage />;
   } else {
       return <h3>Loading <LoadingDots interval={100} dots={20} /></h3>;
   }

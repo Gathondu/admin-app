@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import {connect} from "react-redux";
 import PropTypes from "prop-types";
-import {BrowserRouter, Route} from "react-router-dom";
+import {BrowserRouter, Route, Switch} from "react-router-dom";
 import HomePage from "./home/HomePage";
 import AboutPage from "./about/AboutPage";
 import Header from "./common/Header";
+import Error from "./common/Error";
 import CoursesPage from "./course/CoursesPage";
 import ManageCoursePage from './course/ManageCoursePage';
 import {bindActionCreators} from "redux";
@@ -23,16 +24,19 @@ class App extends Component {
             <BrowserRouter>
                 <div className="container">
                     <Header loading={loading} totalCourses={totalCourses}/>
-                    <Route exact path="/" render={() => <HomePage title="Administration" />}/>
-                    <Route path="/courses" render={(props) =>
-                        <CoursesPage {...props}
-                                     title="Courses"
-                                     courses={courses}
-                                     deleteCourse={deleteCourse} loading={loading} />}
-                    />
-                    <Route exact path="/course" render={(props) => <ManageCoursePage {...props}/>}/>
-                    <Route path="/course/:id" render={(props) => <ManageCoursePage {...props}/>}/>
-                    <Route path="/about" render={() => <AboutPage title="About"/>}/>
+                    <Switch>
+                        <Route exact path="/" render={() => <HomePage title="Administration" />}/>
+                        <Route exact path="/courses" render={(props) =>
+                            <CoursesPage {...props}
+                                         title="Courses"
+                                         courses={courses}
+                                         deleteCourse={deleteCourse} loading={loading} />}
+                        />
+                        <Route exact path="/course" render={(props) => <ManageCoursePage {...props}/>}/>
+                        <Route exact path="/course/:id" render={(props) => <ManageCoursePage {...props}/>}/>
+                        <Route eaxct path="/about" render={() => <AboutPage title="About"/>}/>
+                        <Route component={Error}/>
+                    </Switch>
                 </div>
             </BrowserRouter>
         );
