@@ -15,8 +15,13 @@ class ManageCoursePage extends Component {
   };
   state = {
     course: Object.assign({}, this.props.course),
-    errors: {},
-    saving: false
+    saving: false,
+    errors: { title: "", author: "", category: "", length: "" },
+    formIsValid: false,
+    titleValid: false,
+    authorValid: false,
+    categoryValid: false,
+    lengthValid: false
   };
   componentWillReceiveProps(nextProps) {
     if (this.props.course.id !== nextProps.course.id) {
@@ -24,22 +29,78 @@ class ManageCoursePage extends Component {
     }
   }
 
+  validateInput = course => {
+    let errors = {};
+    for (var field in course) {
+      if (course.hasOwnProperty(field)) {
+        switch (field) {
+          case "title":
+            if (course["title"].length > 0) {
+              this.setState({ titleValid: true });
+            } else {
+              errors["title"] = "Title should contain more than 1 character";
+            }
+            break;
+          case "authorId":
+            if (course["authorId"] !== "") {
+              this.setState({ authorValid: true });
+            } else {
+              errors["authorId"] = "Please select one of the authors";
+            }
+            break;
+          case "category":
+            if (course["category"].length > 0) {
+              this.setState({ categoryValid: true });
+            } else {
+              errors["category"] =
+                "Category should contain more than 1 character";
+            }
+            break;
+          case "length":
+            if (
+              course["length"].length > 0 &&
+              course["length"].match(/\[a-zA-z]+/g) === null &&
+              course["length"].match(/^(\d{1,2}):(\d{1,2})/g) !== null
+            ) {
+              this.setState({ lengthValid: true });
+            } else {
+              errors["length"] =
+                "Length should neither be empty nor contain words. Just numbers and a colon in the format 04:40";
+            }
+            break;
+          default:
+            break;
+        }
+      }
+    }
+    if (Object.keys(errors).length > 0) {
+      this.setState({ errors: errors });
+    } else {
+      this.setState({ errors: {},formIsValid: true });
+    }
+  };
+
   updateCoursesState = e => {
     const field = e.target.name;
     let course = Object.assign({}, this.state.course);
     course[field] = e.target.value;
-    return this.setState({ course: course });
+    this.validateInput(course);
+    this.setState({ course: course });
   };
 
   saveCourse = e => {
     e.preventDefault();
     this.setState({ saving: true });
-    this.props.actions
-      .saveCourse(this.state.course)
-      .then(() => this.redirect())
-      .catch(error => {
-        this.setState({ saving: false });
-        toastr.error(error)});
+    this.validateInput(this.state.course);
+    if (this.state.formIsValid) {
+      this.props.actions
+        .saveCourse(this.state.course)
+        .then(() => this.redirect())
+        .catch(error => {
+          this.setState({ saving: false });
+          toastr.error(error);
+        });
+    }
   };
 
   redirect = () => {
@@ -57,6 +118,7 @@ class ManageCoursePage extends Component {
         onChange={this.updateCoursesState}
         onSave={this.saveCourse}
         loading={this.state.saving}
+        formIsValid={this.state.formIsValid}
       />
     );
   }

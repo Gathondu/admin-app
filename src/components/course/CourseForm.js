@@ -3,12 +3,11 @@ import PropTypes from 'prop-types';
 import TextInput from '../common/TextInput'
 import SelectInput from '../common/SelectInput'
 
-const CourseForm = ({course, allAuthors, onSave, onChange, loading, errors}) => {
+const CourseForm = ({course, allAuthors, onSave, onChange, loading, errors, formIsValid}) => {
     return (
         <form>
             <h1>Manage Course</h1>
             <TextInput
-                className="required"
                 label="Title"
                 onChange={onChange}
                 name="title"
@@ -24,7 +23,6 @@ const CourseForm = ({course, allAuthors, onSave, onChange, loading, errors}) => 
                 options={allAuthors}
                 error={errors.authorId}/>
             <TextInput
-                className="required"
                 label="Category"
                 onChange={onChange}
                 name="category"
@@ -32,7 +30,6 @@ const CourseForm = ({course, allAuthors, onSave, onChange, loading, errors}) => 
                 error={errors.category}
                 placeholder="Enter Course Category"/>
             <TextInput
-                className="required"
                 label="Length"
                 onChange={onChange}
                 name="length"
@@ -41,7 +38,7 @@ const CourseForm = ({course, allAuthors, onSave, onChange, loading, errors}) => 
                 placeholder="Enter Course Length"/>
             <input
                 type="submit"
-                disabled={loading}
+                disabled={loading || !formIsValid}
                 value={loading ? 'Saving...' : 'Save'}
                 className="btn btn-primary"
                 onClick={onSave}/>
