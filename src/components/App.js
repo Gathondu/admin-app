@@ -10,6 +10,8 @@ import CoursesPage from "./course/CoursesPage";
 import ManageCoursePage from './course/ManageCoursePage';
 import {bindActionCreators} from "redux";
 import * as CourseActions from '../actions/course';
+import * as AuthorActions from '../actions/authors';
+import AuthorsPage from "./author/AuthorsPage";
 
 class App extends Component {
     static propTypes = {
@@ -20,20 +22,25 @@ class App extends Component {
     };
 
     render() {
-        const { courses, loading, dispatch, totalCourses, totalAuthors} = this.props;
+        const { courses, loading, dispatch, totalCourses, totalAuthors, authors} = this.props;
         const deleteCourse = bindActionCreators(CourseActions.deleteCourse, dispatch);
+        const deleteAuthor = bindActionCreators(AuthorActions.deleteAuthor, dispatch);
         return (
             <BrowserRouter>
                 <div className="container">
                     <Header loading={loading} totalCourses={totalCourses} totalAuthors={totalAuthors}/>
                     <Switch>
                         <Route exact path="/" render={() => <HomePage title="Administration" />}/>
+                        <Route exact path="/authors" render={(props) =>
+                            <AuthorsPage {...props}
+                                         authors={authors}
+                                         deleteAuthor={deleteAuthor}
+                                         loading={loading}/>}/>
                         <Route exact path="/courses" render={(props) =>
                             <CoursesPage {...props}
-                                         title="Courses"
                                          courses={courses}
-                                         deleteCourse={deleteCourse} loading={loading} />}
-                        />
+                                         deleteCourse={deleteCourse}
+                                         loading={loading} />}/>
                         <Route exact path="/course" render={(props) => <ManageCoursePage {...props}/>}/>
                         <Route exact path="/course/:id" render={(props) => <ManageCoursePage {...props}/>}/>
                         <Route eaxct path="/about" render={() => <AboutPage title="About"/>}/>
@@ -47,6 +54,7 @@ class App extends Component {
 const mapStateToProps = state => (
     {
         courses: state.courses,
+        authors: state.authors,
         loading: state.ajaxCallsInProgress > 0,
         totalCourses: state.totalCourses,
         totalAuthors: state.totalAuthors

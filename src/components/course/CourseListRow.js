@@ -16,7 +16,8 @@ const CourseListRow = ({course, deleteCourse}) => {
 };
 
 CourseListRow.propTypes = {
-    course: PropTypes.object.isRequired
+    course: PropTypes.object.isRequired,
+    deleteCourse: PropTypes.func.isRequired
 };
 
 export default CourseListRow;

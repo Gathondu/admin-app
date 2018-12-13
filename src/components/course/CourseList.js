@@ -38,6 +38,7 @@ const CourseList = ({ courses, deleteCourse, loading }) => {
 
 CourseList.propTypes = {
   courses: PropTypes.array.isRequired,
+  loading: PropTypes.bool.isRequired,
   deleteCourse: PropTypes.func.isRequired
 };
 
