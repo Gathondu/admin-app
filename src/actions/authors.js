@@ -34,7 +34,7 @@ export function loadAuthors() {
     return AuthorApi.getAllAuthors()
       .then(authors => {
         dispatch(loadAuthorsSuccess(authors));
-        dispatch(getNumberOfAuthorsSuccess(authors));
+        dispatch(getNumberOfAuthorsSuccess(authors.length));
       })
       .catch(error => {
         throw error;

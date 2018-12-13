@@ -14,16 +14,18 @@ import * as CourseActions from '../actions/course';
 class App extends Component {
     static propTypes = {
         courses: PropTypes.array.isRequired,
-        loading: PropTypes.bool.isRequired
+        loading: PropTypes.bool.isRequired,
+        totalCourses: PropTypes.number.isRequired,
+        totalAuthors: PropTypes.number.isRequired
     };
 
     render() {
-        const { courses, loading, dispatch, totalCourses} = this.props;
+        const { courses, loading, dispatch, totalCourses, totalAuthors} = this.props;
         const deleteCourse = bindActionCreators(CourseActions.deleteCourse, dispatch);
         return (
             <BrowserRouter>
                 <div className="container">
-                    <Header loading={loading} totalCourses={totalCourses}/>
+                    <Header loading={loading} totalCourses={totalCourses} totalAuthors={totalAuthors}/>
                     <Switch>
                         <Route exact path="/" render={() => <HomePage title="Administration" />}/>
                         <Route exact path="/courses" render={(props) =>
@@ -43,7 +45,12 @@ class App extends Component {
     }
 }
 const mapStateToProps = state => (
-    {courses: state.courses, loading: state.ajaxCallsInProgress > 0, totalCourses: state.totalCourses}
+    {
+        courses: state.courses,
+        loading: state.ajaxCallsInProgress > 0,
+        totalCourses: state.totalCourses,
+        totalAuthors: state.totalAuthors
+    }
 );
 
 export default connect(mapStateToProps)(App);
