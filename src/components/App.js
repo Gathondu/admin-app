@@ -17,12 +17,12 @@ class App extends Component {
     };
 
     render() {
-        const { courses, loading, dispatch} = this.props;
+        const { courses, loading, dispatch, totalCourses} = this.props;
         const deleteCourse = bindActionCreators(CourseActions.deleteCourse, dispatch);
         return (
             <BrowserRouter>
                 <div className="container">
-                    <Header loading={loading}/>
+                    <Header loading={loading} totalCourses={totalCourses}/>
                     <Route exact path="/" render={() => <HomePage title="Administration" />}/>
                     <Route path="/courses" render={(props) =>
                         <CoursesPage {...props}
@@ -39,7 +39,7 @@ class App extends Component {
     }
 }
 const mapStateToProps = state => (
-    {courses: state.courses, loading: state.ajaxCallsInProgress > 0}
+    {courses: state.courses, loading: state.ajaxCallsInProgress > 0, totalCourses: state.totalCourses}
 );
 
 export default connect(mapStateToProps)(App);
