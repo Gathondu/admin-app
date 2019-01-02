@@ -1,0 +1,166 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Course Components CourseForm Component should not regress 1`] = `
+<form>
+  <h1>
+    Manage Course
+  </h1>
+  <div
+    className="form-group"
+  >
+    <label
+      htmlFor="title"
+    >
+      Title
+    </label>
+    <div
+      className="field"
+    >
+      <input
+        className="form-control"
+        name="title"
+        onChange={[Function]}
+        type="text"
+      />
+    </div>
+  </div>
+  <div
+    className="form-group"
+  >
+    <label
+      htmlFor="authorId"
+    >
+      Author
+    </label>
+    <div
+      className="field"
+    >
+      <select
+        className="form-control"
+        name="authorId"
+        onChange={[Function]}
+      >
+        <option
+          value=""
+        >
+          Select Author
+        </option>
+      </select>
+    </div>
+  </div>
+  <div
+    className="form-group"
+  >
+    <label
+      htmlFor="category"
+    >
+      Category
+    </label>
+    <div
+      className="field"
+    >
+      <input
+        className="form-control"
+        name="category"
+        onChange={[Function]}
+        type="text"
+      />
+    </div>
+  </div>
+  <div
+    className="form-group"
+  >
+    <label
+      htmlFor="length"
+    >
+      Length
+    </label>
+    <div
+      className="field"
+    >
+      <input
+        className="form-control"
+        name="length"
+        onChange={[Function]}
+        type="text"
+      />
+    </div>
+  </div>
+  <input
+    className="btn btn-primary"
+    disabled={true}
+    onClick={[Function]}
+    type="submit"
+    value="Save"
+  />
+</form>
+`;
+
+exports[`Course Components CourseList Component should not regress 1`] = `
+<div
+  className="jumbotron"
+>
+  <i
+    aria-hidden="true"
+    className="fa fa-ban fa-5x"
+  />
+  <h2>
+    No Courses to display. Add course to view
+  </h2>
+</div>
+`;
+
+exports[`Course Components CourseListRow Component should not regress 1`] = `
+<tr>
+  <td>
+    <i
+      className="fa fa-trash"
+      onClick={[Function]}
+    />
+  </td>
+  <td>
+    <a
+      rel="noopener noreferrer"
+      target="_blank"
+    >
+      <i
+        className="fa fa-television"
+      />
+    </a>
+  </td>
+  <td>
+    <a
+      href="/course/undefined"
+      onClick={[Function]}
+    />
+  </td>
+  <td />
+  <td />
+  <td />
+</tr>
+`;
+
+exports[`Course Components CoursesPage Component should not regress 1`] = `
+Array [
+  <h1>
+    test courses
+  </h1>,
+  <input
+    className="btn btn-primary"
+    onClick={[Function]}
+    type="submit"
+    value="Add Course"
+  />,
+  <div
+    className="jumbotron"
+  >
+    <i
+      aria-hidden="true"
+      className="fa fa-ban fa-5x"
+    />
+    <h2>
+      No Courses to display. Add course to view
+    </h2>
+  </div>,
+]
+`;
