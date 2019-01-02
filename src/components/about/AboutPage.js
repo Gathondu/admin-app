@@ -1,14 +1,21 @@
-import React, {Component} from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
-class AboutPage extends Component {
-    render() {
-        return (
-            <div>
-                <h1>{this.props.title}</h1>
-                <p>This application uses React, Redux, React Router and a variety of other helpful libraries.</p>
-            </div>
-        );
-    }
-}
+const AboutPage = ({title}) => {
+    return (
+        <div>
+            <h1>{title}</h1>
+            <p>This application uses React, Redux, React Router and a variety of other helpful libraries.</p>
+        </div>
+    );
+};
+
+AboutPage.propTypes = {
+  title: PropTypes.string.isRequired
+};
+
+AboutPage.defaultProps = {
+  title: 'About'
+};
 
 export default AboutPage;
