@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-//let myRef = React.createRef();
-
 const SelectInput = ({name, label, onChange, defaultOption, value, error, options}) => {
     return (
         <div className="form-group">
