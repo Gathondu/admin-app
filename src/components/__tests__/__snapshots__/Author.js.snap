@@ -1,0 +1,123 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Author Components AuthorForm Component Does not regress 1`] = `
+<form>
+  <h1>
+    Manage Author
+  </h1>
+  <div
+    className="form-group has-error"
+  >
+    <label
+      htmlFor="firstName"
+    >
+      First Name
+    </label>
+    <div
+      className="field"
+    >
+      <input
+        className="form-control"
+        name="firstName"
+        onChange={[Function]}
+        type="text"
+        value="first"
+      />
+      <div
+        className="alert alert-danger"
+      >
+        first error
+      </div>
+    </div>
+  </div>
+  <div
+    className="form-group has-error"
+  >
+    <label
+      htmlFor="lastName"
+    >
+      Last Name
+    </label>
+    <div
+      className="field"
+    >
+      <input
+        className="form-control"
+        name="lastName"
+        onChange={[Function]}
+        type="text"
+        value="last"
+      />
+      <div
+        className="alert alert-danger"
+      >
+        last error
+      </div>
+    </div>
+  </div>
+  <input
+    className="btn btn-primary"
+    disabled={true}
+    onClick={[Function]}
+    type="submit"
+    value="Saving..."
+  />
+</form>
+`;
+
+exports[`Author Components AuthorList Component should not regress 1`] = `
+<h3>
+  Loading 
+  <span
+    dots={20}
+    interval={100}
+  >
+    .
+     
+  </span>
+</h3>
+`;
+
+exports[`Author Components AuthorListRow Component does not regress 1`] = `
+<tr>
+  <td>
+    <i
+      className="fa fa-trash"
+      onClick={[Function]}
+    />
+  </td>
+  <td>
+    <a
+      href="/author/undefined"
+      onClick={[Function]}
+    >
+      first last
+    </a>
+  </td>
+</tr>
+`;
+
+exports[`Author Components AuthorsPage Component should not regress 1`] = `
+Array [
+  <h1>
+    Test Title
+  </h1>,
+  <input
+    className="btn btn-primary"
+    onClick={[Function]}
+    type="submit"
+    value="Add Author"
+  />,
+  <div
+    className="jumbotron"
+  >
+    <i
+      aria-hidden="true"
+      className="fa fa-ban fa-5x"
+    />
+    <h2>
+      No Authors to display. Please add an author to view.
+    </h2>
+  </div>,
+]
+`;
