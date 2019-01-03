@@ -121,3 +121,58 @@ Array [
   </div>,
 ]
 `;
+
+exports[`Author Components ManageAuthorPage Component should not regress 1`] = `
+<form>
+  <h1>
+    Manage Author
+  </h1>
+  <div
+    className="form-group"
+  >
+    <label
+      htmlFor="firstName"
+    >
+      First Name
+    </label>
+    <div
+      className="field"
+    >
+      <input
+        className="form-control"
+        name="firstName"
+        onChange={[Function]}
+        type="text"
+      />
+      
+    </div>
+  </div>
+  <div
+    className="form-group"
+  >
+    <label
+      htmlFor="lastName"
+    >
+      Last Name
+    </label>
+    <div
+      className="field"
+    >
+      <input
+        className="form-control"
+        name="lastName"
+        onChange={[Function]}
+        type="text"
+      />
+      
+    </div>
+  </div>
+  <input
+    className="btn btn-primary"
+    disabled={true}
+    onClick={[Function]}
+    type="submit"
+    value="Save"
+  />
+</form>
+`;

@@ -7,7 +7,7 @@ import * as actions from "../../actions/authors";
 import AuthorForm from "./AuthorForm";
 import toastr from "toastr";
 
-class ManageAuthorPage extends Component {
+export class ManageAuthorPage extends Component {
   static propTypes = {
     actions: PropTypes.object.isRequired
   };

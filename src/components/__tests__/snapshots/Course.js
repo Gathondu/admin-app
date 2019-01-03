@@ -1,10 +1,11 @@
 import renderer from 'react-test-renderer';
 import React from 'react';
 import {BrowserRouter} from "react-router-dom";
-import CourseForm from '../course/CourseForm';
-import CourseList from '../course/CourseList';
-import CourseListRow from '../course/CourseListRow';
-import CoursesPage from '../course/CoursesPage';
+import CourseForm from '../../course/CourseForm';
+import CourseList from '../../course/CourseList';
+import CourseListRow from '../../course/CourseListRow';
+import CoursesPage from '../../course/CoursesPage';
+import {ManageCoursePage} from "../../course/ManageCoursePage";
 
 describe('Course Components',()=>{
     describe('CourseForm Component', () => {
@@ -37,6 +38,16 @@ describe('Course Components',()=>{
         it('should not regress', () => {
             const tree = renderer.create(
                 <CoursesPage deleteCourse={()=>{}} courses={[]} title={'test courses'} loading={false}/>
+            ).toJSON();
+            expect(tree).toMatchSnapshot();
+        });
+    });
+    describe('ManageCoursePage Component', () => {
+        it('should not regress', () => {
+            const tree = renderer.create(
+                <BrowserRouter>
+                    <ManageCoursePage course={{}} authors={[]} actions={{}}/>
+                </BrowserRouter>
             ).toJSON();
             expect(tree).toMatchSnapshot();
         });

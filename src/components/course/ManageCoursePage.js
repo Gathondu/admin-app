@@ -7,7 +7,7 @@ import toastr from "toastr";
 import * as courseActions from "../../actions/course";
 import CourseForm from "./CourseForm";
 
-class ManageCoursePage extends Component {
+export class ManageCoursePage extends Component {
   static propTypes = {
     course: PropTypes.object.isRequired,
     authors: PropTypes.array.isRequired,

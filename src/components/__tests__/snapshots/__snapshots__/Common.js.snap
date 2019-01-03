@@ -77,6 +77,16 @@ exports[`Common Components Header Component should not regress 1`] = `
 </nav>
 `;
 
+exports[`Common Components LoadingDots Component should not regress 1`] = `
+<span
+  dots={3}
+  interval={300}
+>
+  .
+   
+</span>
+`;
+
 exports[`Common Components SelectInput Component should not regress 1`] = `
 <div
   className="form-group"

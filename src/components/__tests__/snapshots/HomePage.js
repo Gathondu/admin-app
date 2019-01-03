@@ -1,7 +1,7 @@
 import renderer from 'react-test-renderer';
 import React from 'react';
 import {BrowserRouter} from "react-router-dom";
-import HomePage from "../home/HomePage";
+import HomePage from "../../home/HomePage";
 
 describe('HomePage Component', () => {
     it('should not regress', () => {

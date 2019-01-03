@@ -15,7 +15,7 @@ import AuthorsPage from "./author/AuthorsPage";
 import ManageAuthorPage from "./author/ManageAuthorPage";
 import toastr from 'toastr';
 
-class App extends Component {
+export class App extends Component {
     static propTypes = {
         courses: PropTypes.array.isRequired,
         loading: PropTypes.bool.isRequired,
@@ -61,7 +61,7 @@ class App extends Component {
         );
     }
 }
-const mapStateToProps = state => (
+export const mapStateToProps = state => (
 
     {
         courses: state.courses,

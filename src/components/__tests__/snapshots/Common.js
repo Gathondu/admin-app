@@ -1,11 +1,12 @@
 import renderer from 'react-test-renderer';
 import React from 'react';
 import {BrowserRouter} from 'react-router-dom';
-import EmptyPage from '../common/EmptyPage';
-import Error from '../common/Error';
-import Header from '../common/Header';
-import SelectInput from '../common/SelectInput';
-import TextInput from '../common/TextInput';
+import EmptyPage from '../../common/EmptyPage';
+import Error from '../../common/Error';
+import Header from '../../common/Header';
+import SelectInput from '../../common/SelectInput';
+import TextInput from '../../common/TextInput';
+import LoadingDots from "../../common/LoadingDots";
 
 describe('Common Components',()=>{
     describe('EmptyPage Component',()=>{
@@ -46,6 +47,14 @@ describe('Common Components',()=>{
         it('should not regress',()=>{
             const tree = renderer.create(
                 <TextInput label={'test label'} onChange={()=>{}} name={'test input name'}/>
+            ).toJSON();
+            expect(tree).toMatchSnapshot();
+        });
+    });
+    describe('LoadingDots Component', () => {
+        it('should not regress', () => {
+            const tree = renderer.create(
+                <LoadingDots/>
             ).toJSON();
             expect(tree).toMatchSnapshot();
         });

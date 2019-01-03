@@ -1,10 +1,11 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import {BrowserRouter} from 'react-router-dom';
-import AuthorForm from '../author/AuthorForm';
-import AuthorList from '../author/AuthorList';
-import AuthorListRow from '../author/AuthorListRow';
-import AuthorsPage from '../author/AuthorsPage';
+import AuthorForm from '../../author/AuthorForm';
+import AuthorList from '../../author/AuthorList';
+import AuthorListRow from '../../author/AuthorListRow';
+import AuthorsPage from '../../author/AuthorsPage';
+import {ManageAuthorPage} from "../../author/ManageAuthorPage";
 
 describe('Author Components',() => {
     describe('AuthorForm Component', () => {
@@ -59,6 +60,16 @@ describe('Author Components',() => {
                 <AuthorsPage loading={false} authors={[]} deleteAuthor={()=>{}} title={'Test Title'}/>
             );
             expect(tree.toJSON()).toMatchSnapshot();
+        });
+    });
+    describe('ManageAuthorPage Component', () => {
+        it('should not regress', () => {
+            const tree = renderer.create(
+                <BrowserRouter>
+                    <ManageAuthorPage actions={{}}/>
+                </BrowserRouter>
+            ).toJSON();
+            expect(tree).toMatchSnapshot();
         });
     });
 });

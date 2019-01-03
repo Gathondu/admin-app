@@ -1,5 +1,5 @@
 import renderer from 'react-test-renderer';
-import AboutPage from "../about/AboutPage";
+import AboutPage from "../../about/AboutPage";
 import React from "react";
 
 describe('The About Page Component', () => {
