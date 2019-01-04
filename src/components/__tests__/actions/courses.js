@@ -1,5 +1,12 @@
+import configureMockStore from 'redux-mock-store';
+import thunk from 'redux-thunk';
 import * as actions from '../../../actions/course';
 import * as types from '../../../actionTypes/course';
+import * as ajaxTypes from "../../../actionTypes/ajaxStatus";
+import {courses} from '../../../api/mockCourse';
+
+const middleware = [thunk];
+const mockStore = configureMockStore(middleware);
 
 describe('Course Actions', () => {
     it('should create course', () => {
@@ -44,5 +51,19 @@ describe('Course Actions', () => {
         const action = 'delete';
         const expectedAction = {type: types.UPDATE_NUMBER_OF_COURSES_SUCCESS, action};
         expect(actions.updateTotalCourses(action)).toEqual(expectedAction);
+    });
+});
+describe('Course Async Actions', () => {
+    it('should load courses', () => {
+        const total = courses.length;
+        const expectedActions = [
+            {type: ajaxTypes.BEGIN_AJAX_CALL},
+            {type: types.LOAD_COURSES_SUCCESS, courses},
+            {type: types.GET_NUMBER_OF_COURSES_SUCCESS, total}
+        ];
+        const store = mockStore({courses: []});
+        return store.dispatch(actions.loadCourses()).then( () =>{
+                expect(store.getActions()).toEqual(expectedActions);
+            });
     });
 });
