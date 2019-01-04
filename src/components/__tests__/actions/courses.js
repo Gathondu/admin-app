@@ -62,8 +62,55 @@ describe('Course Async Actions', () => {
             {type: types.GET_NUMBER_OF_COURSES_SUCCESS, total}
         ];
         const store = mockStore({courses: []});
-        return store.dispatch(actions.loadCourses()).then( () =>{
+        store.dispatch(actions.loadCourses()).then( () =>{
                 expect(store.getActions()).toEqual(expectedActions);
             });
+    });
+    it('should create course', () => {
+        const action = 'add';
+        const course = {
+                title: 'test',
+                duration: 5.8,
+                authorId: 3
+            };
+        const expectedActions = [
+            {type: ajaxTypes.BEGIN_AJAX_CALL},
+            {type: types.CREATE_COURSE_SUCCESS, course},
+            {type: types.UPDATE_NUMBER_OF_COURSES_SUCCESS, action}
+        ];
+        const store = mockStore({courses: []});
+        store.dispatch(actions.saveCourse(course)).then(()=>{
+            expect(store.getActions()).toEqual(expectedActions);
+        });
+    });
+    it('should update course', () => {
+        const course ={
+            id: "clean-code",
+            title: "Clean Code: Writing Tests for Humans",
+            watchHref: "http://www.pluralsight.com/courses/writing-clean-code-humans",
+            authorId: "dng test",
+            length: "3:10",
+            category: "Software Practices and Tests"
+        };
+        const expectedActions = [
+            {type: ajaxTypes.BEGIN_AJAX_CALL},
+            {type: types.UPDATE_COURSE_SUCCESS, course}
+        ];
+        const store = mockStore({courses: []});
+        store.dispatch(actions.saveCourse(course)).then(() => {
+            expect(store.getActions()).toEqual(expectedActions);
+        });
+    });
+    it('should delete course', () => {
+        const id = 'clean-code';
+        const action = 'delete';
+        const expectedActions = [
+            {type: types.DELETE_COURSE_SUCCESS, id},
+            {type: types.UPDATE_NUMBER_OF_COURSES_SUCCESS, action}
+        ];
+        const store = mockStore({courses: []});
+        store.dispatch(actions.deleteCourse(id)).then(()=>{
+            expect(store.getActions()).toEqual(expectedActions);
+        });
     });
 });
