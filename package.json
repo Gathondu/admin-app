@@ -20,11 +20,34 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --watchAll",
+    "test": "react-scripts test --coverage --watchAll",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": "react-app"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx,ts,tsx}",
+      "!<rootDir>/node_modules/**",
+      "!<rootDir>/src/serviceWorker.js",
+      "!<rootDir>/src/api/**"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 90,
+        "functions": 90,
+        "lines": 90,
+        "statements": 90
+      },
+      "src/actions/course.js": {
+        "functions": 85
+      }
+    },
+    "coverageDirectory": "<rootDir>/node_modules/coveralls/bin/coveralls.js",
+    "coverageReporters": [
+      "lcov","text"
+    ]
   },
   "browserslist": [
     ">0.2%",
@@ -33,6 +56,9 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "coveralls": "^3.0.2",
+    "enzyme": "^3.8.0",
+    "enzyme-adapter-react-16": "^1.7.1",
     "react-test-renderer": "^16.7.0",
     "redux-devtools-extension": "^2.13.7",
     "redux-immutable-state-invariant": "^2.1.0",
