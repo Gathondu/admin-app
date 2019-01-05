@@ -31,7 +31,9 @@
       "src/**/*.{js,jsx,ts,tsx}",
       "!<rootDir>/node_modules/**",
       "!<rootDir>/src/serviceWorker.js",
-      "!<rootDir>/src/api/**"
+      "!<rootDir>/src/api/**",
+      "!<rootDir>/src/reducers/index.js",
+      "!<rootDir>/src/reducers/initialState.js"
     ],
     "coverageThreshold": {
       "global": {
@@ -39,9 +41,6 @@
         "functions": 90,
         "lines": 90,
         "statements": 90
-      },
-      "src/actions/course.js": {
-        "functions": 85
       }
     },
     "coverageReporters": [
