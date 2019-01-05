@@ -62,24 +62,29 @@ describe('Course Async Actions', () => {
             {type: types.GET_NUMBER_OF_COURSES_SUCCESS, total}
         ];
         const store = mockStore({courses: []});
-        store.dispatch(actions.loadCourses()).then( () =>{
+        return store.dispatch(actions.loadCourses()).then( () =>{
                 expect(store.getActions()).toEqual(expectedActions);
             });
     });
     it('should create course', () => {
         const action = 'add';
+        const courseToCreate = {
+            title: 'test',
+            duration: 5.8,
+            authorId: 3
+        };
         const course = {
-                title: 'test',
-                duration: 5.8,
-                authorId: 3
-            };
+            ...courseToCreate,
+            id: 'test',
+            watchHref: "http://www.pluralsight.com/courses/test"
+        };
         const expectedActions = [
             {type: ajaxTypes.BEGIN_AJAX_CALL},
             {type: types.CREATE_COURSE_SUCCESS, course},
             {type: types.UPDATE_NUMBER_OF_COURSES_SUCCESS, action}
         ];
         const store = mockStore({courses: []});
-        store.dispatch(actions.saveCourse(course)).then(()=>{
+        return store.dispatch(actions.saveCourse(courseToCreate)).then(() => {
             expect(store.getActions()).toEqual(expectedActions);
         });
     });
@@ -97,9 +102,24 @@ describe('Course Async Actions', () => {
             {type: types.UPDATE_COURSE_SUCCESS, course}
         ];
         const store = mockStore({courses: []});
-        store.dispatch(actions.saveCourse(course)).then(() => {
+        return store.dispatch(actions.saveCourse(course)).then(() => {
             expect(store.getActions()).toEqual(expectedActions);
         });
+    });
+    it('should throw error in save course', () => {
+        const course = {
+            title: '',
+            duration: 5.8,
+            authorId: 3
+        };
+        const expectedActions = [
+            {type: ajaxTypes.BEGIN_AJAX_CALL},
+            {type: ajaxTypes.AJAX_CALL_ERROR}
+        ];
+        const store = mockStore({courses: []});
+        return store.dispatch(actions.saveCourse(course)).catch(() => {
+            expect(store.getActions()).toEqual(expectedActions);
+        })
     });
     it('should delete course', () => {
         const id = 'clean-code';
@@ -109,7 +129,7 @@ describe('Course Async Actions', () => {
             {type: types.UPDATE_NUMBER_OF_COURSES_SUCCESS, action}
         ];
         const store = mockStore({courses: []});
-        store.dispatch(actions.deleteCourse(id)).then(()=>{
+        return store.dispatch(actions.deleteCourse(id)).catch(()=>{
             expect(store.getActions()).toEqual(expectedActions);
         });
     });
