@@ -44,7 +44,6 @@
         "functions": 85
       }
     },
-    "coverageDirectory": "<rootDir>/node_modules/coveralls/bin/coveralls.js",
     "coverageReporters": [
       "lcov","text"
     ]

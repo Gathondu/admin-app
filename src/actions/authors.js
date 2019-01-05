@@ -64,14 +64,14 @@ export function saveAuthor(author) {
 
 export function deleteAuthor(id) {
   return function(dispatch) {
-    dispatch(deleteAuthorSuccess(id));
+      dispatch(beginAjaxCall());
     return AuthorApi
         .deleteAuthor(id)
         .then(
+            dispatch(deleteAuthorSuccess(id)),
             dispatch(updateTotalAuthors("delete")),
             toastr.success("Author Deleted.")
-        )
-        .catch(error => {
+        ).catch(error => {
           throw error;
         });
   };
