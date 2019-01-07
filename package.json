@@ -32,6 +32,7 @@
       "!<rootDir>/node_modules/**",
       "!<rootDir>/src/serviceWorker.js",
       "!<rootDir>/src/api/**",
+      "!<rootDir>/src/index.js",
       "!<rootDir>/src/reducers/index.js",
       "!<rootDir>/src/reducers/initialState.js"
     ],
