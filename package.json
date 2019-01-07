@@ -34,7 +34,8 @@
       "!<rootDir>/src/api/**",
       "!<rootDir>/src/index.js",
       "!<rootDir>/src/reducers/index.js",
-      "!<rootDir>/src/reducers/initialState.js"
+      "!<rootDir>/src/reducers/initialState.js",
+      "!<rootDir>/src/store/index.js"
     ],
     "coverageThreshold": {
       "global": {
