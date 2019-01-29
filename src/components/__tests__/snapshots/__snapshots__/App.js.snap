@@ -17,9 +17,9 @@ exports[`App Container Component should render without crashing 1`] = `
         render={[Function]}
       />
       <Route
-        component={[Function]}
         exact={true}
         path="/authors"
+        render={[Function]}
       />
       <Route
         exact={true}

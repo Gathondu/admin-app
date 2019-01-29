@@ -14,11 +14,8 @@ exports[`Manage Author Page component should render correctly 1`] = `
     type="submit"
     value="Add Author"
   />
-  <AuthorList
-    authors={Array []}
-    deleteAuthor={[Function]}
+  <Connect(AuthorList)
     key="author-list"
-    loading={false}
   />
 </Fragment>
 `;

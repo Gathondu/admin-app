@@ -1,0 +1,56 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AuthorList Component should render correctly 1`] = `
+<table
+  className="table"
+>
+  <thead>
+    <tr>
+      <th>
+         
+      </th>
+      <th>
+        Name
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <AuthorListRow
+      author={
+        Object {
+          "firstName": "Cory",
+          "id": "cory-house",
+          "lastName": "House",
+        }
+      }
+      deleteAuthor={[MockFunction]}
+      index={0}
+      key="cory-house"
+    />
+    <AuthorListRow
+      author={
+        Object {
+          "firstName": "Scott",
+          "id": "scott-allen",
+          "lastName": "Allen",
+        }
+      }
+      deleteAuthor={[MockFunction]}
+      index={1}
+      key="scott-allen"
+    />
+    <AuthorListRow
+      author={
+        Object {
+          "firstName": "Dan",
+          "id": "dan-wahlin",
+          "lastName": "Wahlin",
+        }
+      }
+      deleteAuthor={[MockFunction]}
+      index={2}
+      key="dan-wahlin"
+    />
+  </tbody>
+</table>
+`;

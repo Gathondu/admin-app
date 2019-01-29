@@ -2,7 +2,6 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import {BrowserRouter} from 'react-router-dom';
 import AuthorForm from '../../author/AuthorForm';
-import AuthorList from '../../author/AuthorList';
 import AuthorListRow from '../../author/AuthorListRow';
 import {ManageAuthorPage} from "../../author/ManageAuthorPage";
 
@@ -41,14 +40,6 @@ describe('Author Components',() => {
                     <AuthorListRow author={{firstName: 'first', lastName:'last'}}
                                deleteAuthor={()=>{}}/>
                 </BrowserRouter>
-            );
-            expect(tree.toJSON()).toMatchSnapshot();
-        });
-    });
-    describe('AuthorList Component',()=>{
-        it('should not regress',()=>{
-            const tree = renderer.create(
-                <AuthorList loading={true} deleteAuthor={()=>{}} authors={[]}/>
             );
             expect(tree.toJSON()).toMatchSnapshot();
         });

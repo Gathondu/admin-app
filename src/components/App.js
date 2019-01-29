@@ -39,7 +39,7 @@ export class App extends Component {
                     <Header loading={loading} totalCourses={totalCourses} totalAuthors={totalAuthors}/>
                     <Switch>
                         <Route exact path="/" render={() => <HomePage title="Administration" />}/>
-                        <Route exact path="/authors" component={AuthorsPage}/>
+                        <Route exact path="/authors" render={(props) => <AuthorsPage {...props}/>}/>
                         <Route exact path="/author" render={(props) => <ManageAuthorPage {...props}/>}/>
                         <Route exact path="/author/:id" render={(props) => <ManageAuthorPage {...props}/>}/>
                         <Route exact path="/courses" render={(props) =>

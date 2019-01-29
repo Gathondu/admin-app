@@ -65,19 +65,6 @@ exports[`Author Components AuthorForm Component Does not regress 1`] = `
 </form>
 `;
 
-exports[`Author Components AuthorList Component should not regress 1`] = `
-<h3>
-  Loading 
-  <span
-    dots={20}
-    interval={100}
-  >
-    .
-     
-  </span>
-</h3>
-`;
-
 exports[`Author Components AuthorListRow Component does not regress 1`] = `
 <tr>
   <td>

@@ -3,8 +3,10 @@ import PropTypes from 'prop-types';
 import EmptyPage from "../common/EmptyPage";
 import LoadingDots from "../common/LoadingDots";
 import AuthorListRow from "./AuthorListRow";
+import { connect } from 'react-redux';
+import {deleteAuthor} from "../../actions/authors";
 
-const AuthorList = ({authors, deleteAuthor, loading}) => {
+export const AuthorList = ({authors, deleteAuthor, loading}) => {
     const authorRows = authors.map((author, index) => (
         <AuthorListRow
             author={author}
@@ -37,4 +39,10 @@ AuthorList.propTypes = {
     loading: PropTypes.bool.isRequired,
     deleteAuthor: PropTypes.func.isRequired
 };
-export default AuthorList;
+export const mapStateToProps = (state) => (
+    {
+        authors: state.authors,
+        loading: state.ajaxCallsInProgress > 0,
+    }
+);
+export default connect(mapStateToProps, {deleteAuthor})(AuthorList);
