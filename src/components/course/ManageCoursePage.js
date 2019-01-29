@@ -118,7 +118,7 @@ export class ManageCoursePage extends Component {
   };
 
   render() {
-    return [
+    return <div className='manageCourse'>
       <Prompt
         key="prompt"
         when={this.state.formUpdated}
@@ -134,7 +134,7 @@ export class ManageCoursePage extends Component {
         loading={this.state.loading}
         formIsValid={this.state.formIsValid}
       />
-    ];
+    </div>
   }
 }
 

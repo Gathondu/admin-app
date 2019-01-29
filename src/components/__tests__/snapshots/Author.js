@@ -4,7 +4,6 @@ import {BrowserRouter} from 'react-router-dom';
 import AuthorForm from '../../author/AuthorForm';
 import AuthorList from '../../author/AuthorList';
 import AuthorListRow from '../../author/AuthorListRow';
-import AuthorsPage from '../../author/AuthorsPage';
 import {ManageAuthorPage} from "../../author/ManageAuthorPage";
 
 describe('Author Components',() => {
@@ -50,14 +49,6 @@ describe('Author Components',() => {
         it('should not regress',()=>{
             const tree = renderer.create(
                 <AuthorList loading={true} deleteAuthor={()=>{}} authors={[]}/>
-            );
-            expect(tree.toJSON()).toMatchSnapshot();
-        });
-    });
-    describe('AuthorsPage Component',()=>{
-        it('should not regress',()=>{
-            const tree = renderer.create(
-                <AuthorsPage loading={false} authors={[]} deleteAuthor={()=>{}} title={'Test Title'}/>
             );
             expect(tree.toJSON()).toMatchSnapshot();
         });

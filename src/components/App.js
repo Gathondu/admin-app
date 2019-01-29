@@ -10,10 +10,9 @@ import CoursesPage from "./course/CoursesPage";
 import ManageCoursePage from './course/ManageCoursePage';
 import {bindActionCreators} from "redux";
 import * as CourseActions from '../actions/course';
-import * as AuthorActions from '../actions/authors';
 import AuthorsPage from "./author/AuthorsPage";
 import ManageAuthorPage from "./author/ManageAuthorPage";
-import toastr from 'toastr';
+// import toastr from 'toastr';
 
 export class App extends Component {
     static propTypes = {
@@ -24,26 +23,23 @@ export class App extends Component {
     };
 
     render() {
-        const { courses, loading, dispatch, totalCourses, totalAuthors, authors} = this.props;
+        const { courses, loading, dispatch, totalCourses, totalAuthors} = this.props;
         const deleteCourse = bindActionCreators(CourseActions.deleteCourse, dispatch);
-        const deleteAuthor = bindActionCreators(AuthorActions.deleteAuthor, dispatch);
-        const handleDeleteAuthor = authorId => {
-            const authorToDelete = courses.filter(course => course.authorId === authorId);
-            (authorToDelete.length > 0)
-                ? toastr.error('Cannot delete Author.They have a registered course.')
-                : deleteAuthor(authorId)
-        };
+        // const handleDeleteAuthor = authorId => {
+        //     const authorToDelete = courses.filter(course => course.authorId === authorId);
+        //     (authorToDelete.length > 0)
+        //         ? toastr.error('Cannot' +
+        //         '' +
+        //         ' delete Author.They have a registered course.')
+        //         : deleteAuthor(authorId)
+        // };
         return (
             <BrowserRouter>
                 <div className="container">
                     <Header loading={loading} totalCourses={totalCourses} totalAuthors={totalAuthors}/>
                     <Switch>
                         <Route exact path="/" render={() => <HomePage title="Administration" />}/>
-                        <Route exact path="/authors" render={(props) =>
-                            <AuthorsPage {...props}
-                                         authors={authors}
-                                         deleteAuthor={handleDeleteAuthor}
-                                         loading={loading}/>}/>
+                        <Route exact path="/authors" component={AuthorsPage}/>
                         <Route exact path="/author" render={(props) => <ManageAuthorPage {...props}/>}/>
                         <Route exact path="/author/:id" render={(props) => <ManageAuthorPage {...props}/>}/>
                         <Route exact path="/courses" render={(props) =>
@@ -62,7 +58,6 @@ export class App extends Component {
     }
 }
 export const mapStateToProps = state => (
-
     {
         courses: state.courses,
         authors: state.authors,

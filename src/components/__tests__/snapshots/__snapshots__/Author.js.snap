@@ -97,82 +97,62 @@ exports[`Author Components AuthorListRow Component does not regress 1`] = `
 </tr>
 `;
 
-exports[`Author Components AuthorsPage Component should not regress 1`] = `
-Array [
-  <h1>
-    Test Title
-  </h1>,
-  <input
-    className="btn btn-primary"
-    onClick={[Function]}
-    type="submit"
-    value="Add Author"
-  />,
-  <div
-    className="jumbotron"
-  >
-    <i
-      aria-hidden="true"
-      className="fa fa-ban fa-5x"
-    />
-    <h2>
-      No Authors to display. Please add an author to view.
-    </h2>
-  </div>,
-]
-`;
-
 exports[`Author Components ManageAuthorPage Component should not regress 1`] = `
-<form>
-  <h1>
-    Manage Author
-  </h1>
-  <div
-    className="form-group"
-  >
-    <label
-      htmlFor="firstName"
-    >
-      First Name
-    </label>
+<div
+  className="manageAuthor"
+>
+  ,
+  <form>
+    <h1>
+      Manage Author
+    </h1>
     <div
-      className="field"
+      className="form-group"
     >
-      <input
-        className="form-control"
-        name="firstName"
-        onChange={[Function]}
-        type="text"
-      />
-      
+      <label
+        htmlFor="firstName"
+      >
+        First Name
+      </label>
+      <div
+        className="field"
+      >
+        <input
+          className="form-control"
+          name="firstName"
+          onChange={[Function]}
+          type="text"
+        />
+        
+      </div>
     </div>
-  </div>
-  <div
-    className="form-group"
-  >
-    <label
-      htmlFor="lastName"
-    >
-      Last Name
-    </label>
     <div
-      className="field"
+      className="form-group"
     >
-      <input
-        className="form-control"
-        name="lastName"
-        onChange={[Function]}
-        type="text"
-      />
-      
+      <label
+        htmlFor="lastName"
+      >
+        Last Name
+      </label>
+      <div
+        className="field"
+      >
+        <input
+          className="form-control"
+          name="lastName"
+          onChange={[Function]}
+          type="text"
+        />
+        
+      </div>
     </div>
-  </div>
-  <input
-    className="btn btn-primary"
-    disabled={true}
-    onClick={[Function]}
-    type="submit"
-    value="Save"
-  />
-</form>
+    <input
+      className="btn btn-primary"
+      disabled={true}
+      onClick={[Function]}
+      type="submit"
+      value="Save"
+    />
+  </form>
+</div>
 `;

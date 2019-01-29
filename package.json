@@ -36,17 +36,6 @@
       "!<rootDir>/src/reducers/index.js",
       "!<rootDir>/src/reducers/initialState.js",
       "!<rootDir>/src/store/index.js"
-    ],
-    "coverageThreshold": {
-      "global": {
-        "branches": 90,
-        "functions": 90,
-        "lines": 90,
-        "statements": 90
-      }
-    },
-    "coverageReporters": [
-      "lcov","text"
     ]
   },
   "browserslist": [
@@ -59,6 +48,9 @@
     "coveralls": "^3.0.2",
     "enzyme": "^3.8.0",
     "enzyme-adapter-react-16": "^1.7.1",
+    "enzyme-to-json": "^3.3.5",
+    "identity-obj-proxy": "^3.0.0",
+    "jest-transform-stub": "^1.0.0",
     "react-test-renderer": "^16.7.0",
     "redux-devtools-extension": "^2.13.7",
     "redux-immutable-state-invariant": "^2.1.0",

@@ -1,72 +1,60 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`App Container Component should not regress 1`] = `
-<div
-  className="container"
->
-  <nav>
-    <a
-      aria-current="page"
-      className="active"
-      href="/"
-      onClick={[Function]}
-      style={Object {}}
-    >
-      Home
-    </a>
-     | 
-    <a
-      aria-current={null}
-      href="/authors"
-      onClick={[Function]}
-    >
-      Authors
-    </a>
-    <span>
-       
-    </span>
-    <span>
-      4
-    </span>
-     | 
-    <a
-      aria-current={null}
-      href="/courses"
-      onClick={[Function]}
-    >
-      Courses
-    </a>
-    <span>
-       
-    </span>
-    <span>
-      4
-    </span>
-     | 
-    <a
-      aria-current={null}
-      href="/about"
-      onClick={[Function]}
-    >
-      About
-    </a>
-  </nav>
+exports[`App Container Component should render without crashing 1`] = `
+<BrowserRouter>
   <div
-    className="jumbotron"
+    className="container"
   >
-    <h1>
-      Administration
-    </h1>
-    <p>
-      React, Redux and React Route in ES6 for ultra-responsive web apps.
-    </p>
-    <a
-      className="btn btn-primary btn-lg"
-      href="/about"
-      onClick={[Function]}
-    >
-      Learn More
-    </a>
+    <Header
+      loading={false}
+      totalAuthors={3}
+      totalCourses={4}
+    />
+    <Switch>
+      <Route
+        exact={true}
+        path="/"
+        render={[Function]}
+      />
+      <Route
+        component={[Function]}
+        exact={true}
+        path="/authors"
+      />
+      <Route
+        exact={true}
+        path="/author"
+        render={[Function]}
+      />
+      <Route
+        exact={true}
+        path="/author/:id"
+        render={[Function]}
+      />
+      <Route
+        exact={true}
+        path="/courses"
+        render={[Function]}
+      />
+      <Route
+        exact={true}
+        path="/course"
+        render={[Function]}
+      />
+      <Route
+        exact={true}
+        path="/course/:id"
+        render={[Function]}
+      />
+      <Route
+        eaxct={true}
+        path="/about"
+        render={[Function]}
+      />
+      <Route
+        component={[Function]}
+      />
+    </Switch>
   </div>
-</div>
+</BrowserRouter>
 `;

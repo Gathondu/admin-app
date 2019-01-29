@@ -96,7 +96,7 @@ export class ManageAuthorPage extends Component {
   };
 
   render() {
-    return [
+    return <div className='manageAuthor'>
       <Prompt
         key="prompt"
         when={this.state.formUpdated}
@@ -111,16 +111,16 @@ export class ManageAuthorPage extends Component {
         loading={this.state.loading}
         formIsValid={this.state.formIsValid}
       />
-    ];
+    </div>
   }
 }
 
-const getAuthorById = (authors, id) => {
+export const getAuthorById = (authors, id) => {
     const author = authors.filter(author => author.id === id);
     if (author.length) return author[0];
     return null;
 };
-const mapStateToProps = (state, ownProps) => {
+export const mapStateToProps = (state, ownProps) => {
     const authorId = ownProps.match.params.id;
     let author = {
         firstName: "",
@@ -133,7 +133,7 @@ const mapStateToProps = (state, ownProps) => {
         author: author
     };
 };
-const mapDispatchToProps = dispatch => ({
+export const mapDispatchToProps = dispatch => ({
   actions: bindActionCreators(actions, dispatch)
 });
 

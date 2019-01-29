@@ -1,16 +1,11 @@
 import React from 'react';
-import {render} from 'enzyme';
-import {BrowserRouter} from 'react-router-dom';
+import {shallow} from 'enzyme';
 import {ManageAuthorPage} from '../../author/ManageAuthorPage';
 import * as actions from "../../../actions/authors";
 
 describe('Manage Author Page component', () => {
-    it('should render correctly', () => {
-        const wrapper = render(
-            <BrowserRouter>
-                <ManageAuthorPage actions={actions}/>
-            </BrowserRouter>);
-        console.log(wrapper.text());
-        expect(wrapper.text()).toContain('First Name');
+    it('should be selectable by class manageAuthor', () => {
+        const wrapper = shallow(<ManageAuthorPage actions={actions}/>);
+        expect(wrapper.is('.manageAuthor')).toBe(true);
     });
 });

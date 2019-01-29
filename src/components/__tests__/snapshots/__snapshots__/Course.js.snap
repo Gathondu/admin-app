@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Course Components CourseForm Component should not regress 1`] = `
-<form>
+<form
+  className="courseForm"
+>
   <h1>
     Manage Course
   </h1>
@@ -166,100 +168,107 @@ Array [
 `;
 
 exports[`Course Components ManageCoursePage Component should not regress 1`] = `
-<form>
-  <h1>
-    Manage Course
-  </h1>
-  <div
-    className="form-group"
+<div
+  className="manageCourse"
+>
+  ,
+  <form
+    className="courseForm"
   >
-    <label
-      htmlFor="title"
-    >
-      Title
-    </label>
+    <h1>
+      Manage Course
+    </h1>
     <div
-      className="field"
+      className="form-group"
     >
-      <input
-        className="form-control"
-        name="title"
-        onChange={[Function]}
-        type="text"
-      />
-      
-    </div>
-  </div>
-  <div
-    className="form-group"
-  >
-    <label
-      htmlFor="authorId"
-    >
-      Author
-    </label>
-    <div
-      className="field"
-    >
-      <select
-        className="form-control"
-        name="authorId"
-        onChange={[Function]}
+      <label
+        htmlFor="title"
       >
-        <option
-          value=""
+        Title
+      </label>
+      <div
+        className="field"
+      >
+        <input
+          className="form-control"
+          name="title"
+          onChange={[Function]}
+          type="text"
+        />
+        
+      </div>
+    </div>
+    <div
+      className="form-group"
+    >
+      <label
+        htmlFor="authorId"
+      >
+        Author
+      </label>
+      <div
+        className="field"
+      >
+        <select
+          className="form-control"
+          name="authorId"
+          onChange={[Function]}
         >
-          Select Author
-        </option>
-      </select>
+          <option
+            value=""
+          >
+            Select Author
+          </option>
+        </select>
+      </div>
     </div>
-  </div>
-  <div
-    className="form-group"
-  >
-    <label
-      htmlFor="category"
-    >
-      Category
-    </label>
     <div
-      className="field"
+      className="form-group"
     >
-      <input
-        className="form-control"
-        name="category"
-        onChange={[Function]}
-        type="text"
-      />
-      
+      <label
+        htmlFor="category"
+      >
+        Category
+      </label>
+      <div
+        className="field"
+      >
+        <input
+          className="form-control"
+          name="category"
+          onChange={[Function]}
+          type="text"
+        />
+        
+      </div>
     </div>
-  </div>
-  <div
-    className="form-group"
-  >
-    <label
-      htmlFor="length"
-    >
-      Length
-    </label>
     <div
-      className="field"
+      className="form-group"
     >
-      <input
-        className="form-control"
-        name="length"
-        onChange={[Function]}
-        type="text"
-      />
-      
+      <label
+        htmlFor="length"
+      >
+        Length
+      </label>
+      <div
+        className="field"
+      >
+        <input
+          className="form-control"
+          name="length"
+          onChange={[Function]}
+          type="text"
+        />
+        
+      </div>
     </div>
-  </div>
-  <input
-    className="btn btn-primary"
-    disabled={true}
-    onClick={[Function]}
-    type="submit"
-    value="Save"
-  />
-</form>
+    <input
+      className="btn btn-primary"
+      disabled={true}
+      onClick={[Function]}
+      type="submit"
+      value="Save"
+    />
+  </form>
+</div>
 `;
