@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CourseListRow Component does not regress 1`] = `
+<tr>
+  <td>
+    <i
+      className="fa fa-trash"
+      onClick={[Function]}
+    />
+  </td>
+  <td>
+    <a
+      rel="noopener noreferrer"
+      target="_blank"
+    >
+      <i
+        className="fa fa-television"
+      />
+    </a>
+  </td>
+  <td>
+    <Link
+      replace={false}
+      to="/course/undefined"
+    />
+  </td>
+  <td />
+  <td />
+  <td />
+</tr>
+`;

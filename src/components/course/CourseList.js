@@ -1,10 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
 import CourseListRow from "./CourseListRow";
-import LoadingDots from '../common/LoadingDots'
-import EmptyPage from '../common/EmptyPage'
+import LoadingDots from '../common/LoadingDots';
+import EmptyPage from '../common/EmptyPage';
+import { connect } from 'react-redux';
+import {deleteCourse} from '../../actions/course';
 
-const CourseList = ({ courses, deleteCourse, loading }) => {
+export const CourseList = ({ courses, deleteCourse, loading }) => {
   const courseRows = courses.map((course, index) => (
     <CourseListRow
       course={course}
@@ -41,5 +43,11 @@ CourseList.propTypes = {
   loading: PropTypes.bool.isRequired,
   deleteCourse: PropTypes.func.isRequired
 };
+export const mapStateToProps = state => (
+    {
+      courses: state.courses,
+      loading: state.ajaxCallInProgress > 0
+    }
+);
 
-export default CourseList;
+export default connect(mapStateToProps, {deleteCourse})(CourseList);

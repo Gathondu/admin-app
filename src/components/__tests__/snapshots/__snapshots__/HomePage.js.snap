@@ -5,7 +5,7 @@ exports[`HomePage Component should not regress 1`] = `
   className="jumbotron"
 >
   <h1>
-    test title
+    Administration
   </h1>
   <p>
     React, Redux and React Route in ES6 for ultra-responsive web apps.

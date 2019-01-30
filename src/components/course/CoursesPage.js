@@ -1,34 +1,25 @@
-import React from "react";
+import React, {Fragment} from "react";
 import PropTypes from "prop-types";
 import CourseList from "./CourseList";
 
-const CoursesPage = ({ title, courses, deleteCourse, loading, history }) => {
-    return [
-      <h1 key="title">{title}</h1>,
+const CoursesPage = ({ history }) => {
+    return <Fragment>
+      <h1 key="title">Courses</h1>
       <input
         key="submit"
         type="submit"
         value="Add Course"
         className="btn btn-primary"
         onClick={() => history.push("/course")}
-      />,
-      <CourseList
-        key="course-list"
-        courses={courses}
-        deleteCourse={deleteCourse}
-        loading={loading}
       />
-    ];
+      <CourseList key="course-list" />
+    </Fragment>
   };
 
 CoursesPage.propTypes = {
-  title: PropTypes.string.isRequired,
-  courses: PropTypes.array.isRequired,
-  deleteCourse: PropTypes.func.isRequired,
-  loading: PropTypes.bool
-};
-CoursesPage.defaultProps = {
-  title: "Courses"
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired
+  }).isRequired
 };
 
 export default CoursesPage;

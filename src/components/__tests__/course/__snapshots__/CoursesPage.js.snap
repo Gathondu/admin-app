@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CoursesPage Component should not regress 1`] = `
+<Fragment>
+  <h1
+    key="title"
+  >
+    Courses
+  </h1>
+  <input
+    className="btn btn-primary"
+    key="submit"
+    onClick={[Function]}
+    type="submit"
+    value="Add Course"
+  />
+  <Connect(CourseList)
+    key="course-list"
+  />
+</Fragment>
+`;

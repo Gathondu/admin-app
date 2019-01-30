@@ -52,7 +52,7 @@ describe('Manage Author Page component', () => {
         wrapper.instance().saveAuthor({preventDefault: () => {}});
         expect(spy).toHaveBeenCalled();
     });
-    it('should save redirect', () => {
+    it('should redirect', () => {
         const {wrapper, props} = setup();
         wrapper.instance().redirect();
         expect(props.history.push).toHaveBeenCalled();

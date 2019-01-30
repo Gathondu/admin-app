@@ -1,0 +1,107 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CourseList Component should render correctly 1`] = `
+<table
+  className="table"
+>
+  <thead>
+    <tr>
+      <th>
+         
+      </th>
+      <th>
+         
+      </th>
+      <th>
+        Title
+      </th>
+      <th>
+        Author
+      </th>
+      <th>
+        Category
+      </th>
+      <th>
+        Length
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <CourseListRow
+      course={
+        Object {
+          "authorId": "cory-house",
+          "category": "JavaScript",
+          "id": "react-flux-building-applications",
+          "length": "5:08",
+          "title": "Building Applications in React and Flux",
+          "watchHref": "http://www.pluralsight.com/courses/react-flux-building-applications",
+        }
+      }
+      deleteCourse={[MockFunction]}
+      index={0}
+      key="react-flux-building-applications"
+    />
+    <CourseListRow
+      course={
+        Object {
+          "authorId": "cory-house",
+          "category": "Software Practices",
+          "id": "clean-code",
+          "length": "3:10",
+          "title": "Clean Code: Writing Code for Humans",
+          "watchHref": "http://www.pluralsight.com/courses/writing-clean-code-humans",
+        }
+      }
+      deleteCourse={[MockFunction]}
+      index={1}
+      key="clean-code"
+    />
+    <CourseListRow
+      course={
+        Object {
+          "authorId": "cory-house",
+          "category": "Software Architecture",
+          "id": "architecture",
+          "length": "2:52",
+          "title": "Architecting Applications for the Real World",
+          "watchHref": "http://www.pluralsight.com/courses/architecting-applications-dotnet",
+        }
+      }
+      deleteCourse={[MockFunction]}
+      index={2}
+      key="architecture"
+    />
+    <CourseListRow
+      course={
+        Object {
+          "authorId": "cory-house",
+          "category": "Career",
+          "id": "career-reboot-for-developer-mind",
+          "length": "2:30",
+          "title": "Becoming an Outlier: Reprogramming the Developer Mind",
+          "watchHref": "http://www.pluralsight.com/courses/career-reboot-for-developer-mind",
+        }
+      }
+      deleteCourse={[MockFunction]}
+      index={3}
+      key="career-reboot-for-developer-mind"
+    />
+    <CourseListRow
+      course={
+        Object {
+          "authorId": "cory-house",
+          "category": "HTML5",
+          "id": "web-components-shadow-dom",
+          "length": "5:10",
+          "title": "Web Component Fundamentals",
+          "watchHref": "http://www.pluralsight.com/courses/web-components-shadow-dom",
+        }
+      }
+      deleteCourse={[MockFunction]}
+      index={4}
+      key="web-components-shadow-dom"
+    />
+  </tbody>
+</table>
+`;
