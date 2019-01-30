@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AuthorListRow Component does not regress 1`] = `
+<tr>
+  <td>
+    <i
+      className="fa fa-trash"
+      onClick={[Function]}
+    />
+  </td>
+  <td>
+    <Link
+      replace={false}
+      to="/author/undefined"
+    >
+      undefined undefined
+    </Link>
+  </td>
+</tr>
+`;

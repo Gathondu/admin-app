@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Manage Author Page component should not regress 1`] = `
+<Fragment>
+  <Prompt
+    key="prompt"
+    message="The form isn't saved, are you sure you want to leave the page?"
+    when={false}
+  />
+  <form>
+    <h1>
+      Manage Author
+    </h1>
+    <TextInput
+      error=""
+      label="First Name"
+      name="firstName"
+      onChange={[Function]}
+      placeholder="Enter First Name"
+      value=""
+    />
+    <TextInput
+      error=""
+      label="Last Name"
+      name="lastName"
+      onChange={[Function]}
+      placeholder="Enter Course Category"
+      value=""
+    />
+    <input
+      className="btn btn-primary"
+      disabled={true}
+      onClick={[Function]}
+      type="submit"
+      value="Save"
+    />
+  </form>
+</Fragment>
+`;

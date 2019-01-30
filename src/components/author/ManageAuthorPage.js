@@ -1,36 +1,22 @@
-import React, { Component } from "react";
+import React, {Fragment, PureComponent} from "react";
 import { connect } from "react-redux";
-import PropTypes from "prop-types";
 import { bindActionCreators } from "redux";
 import { Prompt } from "react-router-dom";
 import * as actions from "../../actions/authors";
-import AuthorForm from "./AuthorForm";
 import toastr from "toastr";
+import TextInput from "../common/TextInput";
 
-export class ManageAuthorPage extends Component {
-  static propTypes = {
-    actions: PropTypes.object.isRequired
-  };
+
+export class ManageAuthorPage extends PureComponent {
   state = {
     author: Object.assign({}, this.props.author),
     loading: false,
-    errors: { firstName: "", lastName: "" },
+    errors: {firstName: "", lastName: ""},
     formIsValid: false,
     firstNameValid: false,
     lastNameValid: false,
     formUpdated: false
   };
-  componentWillReceiveProps(nextProps) {
-    if (this.props.author.id !== nextProps.author.id) {
-      this.setState({ author: Object.assign({}, nextProps.author) });
-    }
-  }
-  shouldComponentUpdate(nextProps, nextState, nextContext) {
-    if (this.state.author !== nextState.author) {
-      this.setState({ formUpdated: true });
-    }
-    return true;
-  }
 
   validateInput = author => {
     let errors = {};
@@ -39,18 +25,18 @@ export class ManageAuthorPage extends Component {
         switch (field) {
           case "firstName":
             if (author["firstName"].length > 0) {
-              this.setState({ firstNameValid: true });
+              this.setState({firstNameValid: true});
             } else {
               errors["firstName"] =
-                "First Name should contain more than 1 character";
+                  "First Name should contain more than 1 character";
             }
             break;
           case "lastName":
             if (author["lastName"].length > 0) {
-              this.setState({ lastNameValid: true });
+              this.setState({lastNameValid: true});
             } else {
               errors["lastName"] =
-                "Last Name should contain more than 1 character";
+                  "Last Name should contain more than 1 character";
             }
             break;
           default:
@@ -59,9 +45,9 @@ export class ManageAuthorPage extends Component {
       }
     }
     if (Object.keys(errors).length > 0) {
-      this.setState({ errors: errors });
+      this.setState({errors: errors});
     } else {
-      this.setState({ errors: {}, formIsValid: true });
+      this.setState({errors: {}, formIsValid: true});
     }
   };
 
@@ -70,48 +56,62 @@ export class ManageAuthorPage extends Component {
     let author = Object.assign({}, this.state.author);
     author[field] = e.target.value;
     this.validateInput(author);
-    this.setState({ author: author });
+    this.setState({author: author});
   };
 
   saveAuthor = e => {
     e.preventDefault();
-    this.setState({ loading: true });
+    this.setState({loading: true});
     this.validateInput(this.state.author);
     if (this.state.formIsValid) {
-      this.setState({ formUpdated: false });
+      this.setState({formUpdated: false});
       this.props.actions
-        .saveAuthor(this.state.author)
-        .then(() => this.redirect())
-        .catch(error => {
-          this.setState({ loading: false });
-          toastr.error(error);
-        });
+          .saveAuthor(this.state.author)
+          .then(() => this.redirect())
+          .catch(error => {
+            this.setState({loading: false});
+            toastr.error(error);
+          });
     }
   };
 
   redirect = () => {
-    this.setState({ loading: false });
+    this.setState({loading: false});
     toastr.success("Author Saved.");
     this.props.history.push("/authors");
   };
 
   render() {
-    return <div className='manageAuthor'>
+    return <Fragment>
       <Prompt
-        key="prompt"
-        when={this.state.formUpdated}
-        message="The form isn't saved, are you sure you want to leave the page?"
-      />,
-      <AuthorForm
-        key="form"
-        author={this.state.author}
-        errors={this.state.errors}
-        onChange={this.updateAuthorState}
-        onSave={this.saveAuthor}
-        loading={this.state.loading}
-        formIsValid={this.state.formIsValid}
+          key="prompt"
+          when={this.state.formUpdated}
+          message="The form isn't saved, are you sure you want to leave the page?"
       />
-    </div>
+      <form>
+        <h1>Manage Author</h1>
+        <TextInput
+            label="First Name"
+            onChange={this.updateAuthorState}
+            name="firstName"
+            value={this.state.author.firstName}
+            error={this.state.errors.firstName}
+            placeholder="Enter First Name"/>
+        <TextInput
+            label="Last Name"
+            onChange={this.updateAuthorState}
+            name="lastName"
+            value={this.state.author.lastName}
+            error={this.state.errors.lastName}
+            placeholder="Enter Course Category"/>
+        <input
+            type="submit"
+            disabled={this.state.loading || !this.state.formIsValid}
+            value={this.state.loading ? 'Saving...' : 'Save'}
+            className="btn btn-primary"
+            onClick={this.saveAuthor}/>
+      </form>
+    </Fragment>
   }
 }
 
