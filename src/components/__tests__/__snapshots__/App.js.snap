@@ -12,12 +12,11 @@ exports[`App component should render without crashing 1`] = `
     />
     <Switch>
       <Route
+        component={[Function]}
         exact={true}
         path="/"
-        render={[Function]}
       />
       <Route
-        exact={true}
         path="/authors"
         render={[Function]}
       />
@@ -32,7 +31,6 @@ exports[`App component should render without crashing 1`] = `
         render={[Function]}
       />
       <Route
-        exact={true}
         path="/courses"
         render={[Function]}
       />
@@ -47,9 +45,8 @@ exports[`App component should render without crashing 1`] = `
         render={[Function]}
       />
       <Route
-        eaxct={true}
+        component={[Function]}
         path="/about"
-        render={[Function]}
       />
       <Route
         component={[Function]}

@@ -35,9 +35,6 @@ export function loadAuthors() {
       .then(authors => {
         dispatch(loadAuthorsSuccess(authors));
         dispatch(getNumberOfAuthorsSuccess(authors.length));
-      })
-      .catch(error => {
-        throw error;
       });
   };
 }
@@ -71,9 +68,7 @@ export function deleteAuthor(id) {
             dispatch(deleteAuthorSuccess(id)),
             dispatch(updateTotalAuthors("delete")),
             toastr.success("Author Deleted.")
-        ).catch(error => {
-          throw error;
-        });
+        );
   };
 }
 

@@ -1,21 +1,11 @@
 import React from 'react';
-import {mount, shallow} from "enzyme";
+import {shallow} from "enzyme";
 import toJson from 'enzyme-to-json';
 import HomePage from "../home/HomePage";
-import {App} from "../App";
-import {MemoryRouter} from "react-router-dom";
-import configureStore from "../../store";
-import {Provider} from "react-redux";
-
-const store = configureStore();
-const renderRoutes = path =>
-    mount(
-        <MemoryRouter initialEntries={[path]}>
-            <Provider store={store}>
-                <App totalCourses={4} totalAuthors={3} loading={false} courses={[]}/>
-            </Provider>
-        </MemoryRouter>
-    );
+import {App, mapStateToProps} from "../App";
+import {Route} from "react-router-dom";
+import Error from '../common/Error';
+import AboutPage from "../about/AboutPage";
 
 describe('App component', () => {
     const setup = () => {
@@ -38,9 +28,19 @@ describe('App component', () => {
         const {wrapper} = setup();
         expect(wrapper.find('.container').length).toBe(1);
     });
-    // it('should render routes correctly', () => {
-    //     const component = renderRoutes('/');
-    //     console.log(renderRoutes('/').debug());
-    //     expect(component.find(HomePage)).toHaveLength(1)
-    // });
+    it('should render routes correctly', () => {
+        const {wrapper} = setup();
+        const pathMap = wrapper.find(Route).reduce((pathMap, route) => {
+            const routeProps = route.props();
+            pathMap[routeProps.path] = routeProps.component;
+            return pathMap;
+        }, {});
+        expect(pathMap['/']).toBe(HomePage);
+        expect(pathMap[undefined]).toBe(Error);
+        expect(pathMap['/about']).toBe(AboutPage);
+    });
+    it('should map state to props correctly', () => {
+        const {props} = setup();
+        expect(mapStateToProps(props).totalCourses).toEqual(4);
+    });
 });

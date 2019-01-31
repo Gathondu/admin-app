@@ -74,6 +74,13 @@ exports[`Common Components Header Component should not regress 1`] = `
   >
     About
   </a>
+  <span
+    dots={20}
+    interval={100}
+  >
+    .
+     
+  </span>
 </nav>
 `;
 

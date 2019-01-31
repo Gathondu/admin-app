@@ -26,14 +26,14 @@ export class App extends Component {
                 <div className="container">
                     <Header loading={loading} totalCourses={totalCourses} totalAuthors={totalAuthors}/>
                     <Switch>
-                        <Route exact path="/" render={() => <HomePage />}/>
-                        <Route exact path="/authors" render={(props) => <AuthorsPage {...props}/>}/>
+                        <Route exact path="/" component={HomePage}/>
+                        <Route path="/authors" render={(props) => <AuthorsPage {...props}/>}/>
                         <Route exact path="/author" render={(props) => <ManageAuthorPage {...props}/>}/>
                         <Route exact path="/author/:id" render={(props) => <ManageAuthorPage {...props}/>}/>
-                        <Route exact path="/courses" render={(props) => <CoursesPage {...props} />}/>
+                        <Route path="/courses" render={(props) => <CoursesPage {...props} />}/>
                         <Route exact path="/course" render={(props) => <ManageCoursePage {...props}/>}/>
                         <Route exact path="/course/:id" render={(props) => <ManageCoursePage {...props}/>}/>
-                        <Route eaxct path="/about" render={() => <AboutPage title="About"/>}/>
+                        <Route path="/about" component={AboutPage}/>
                         <Route component={Error}/>
                     </Switch>
                 </div>

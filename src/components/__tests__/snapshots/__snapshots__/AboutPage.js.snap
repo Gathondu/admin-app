@@ -3,7 +3,7 @@
 exports[`The About Page Component It does not regress 1`] = `
 <div>
   <h1>
-    About Test
+    About
   </h1>
   <p>
     This application uses React, Redux, React Router and a variety of other helpful libraries.
