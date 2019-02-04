@@ -6,7 +6,6 @@ import * as actions from "../../actions/authors";
 import toastr from "toastr";
 import TextInput from "../common/TextInput";
 
-
 export class ManageAuthorPage extends PureComponent {
   state = {
     author: Object.assign({}, this.props.author),
