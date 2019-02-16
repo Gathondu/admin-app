@@ -35,9 +35,6 @@ export function loadCourses() {
       .then(courses => {
         dispatch(loadCoursesSuccess(courses));
         dispatch(getNumberOfCoursesSuccess(courses.length));
-      })
-      .catch(error => {
-        throw error;
       });
   };
 }
@@ -70,9 +67,6 @@ export function deleteCourse(id) {
       .then(
         dispatch(updateTotalCourses("delete")),
         toastr.success("Course Deleted.")
-      )
-      .catch(error => {
-        throw error;
-      });
+      );
   };
 }

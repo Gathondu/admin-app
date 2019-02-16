@@ -1,0 +1,142 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Common Components EmptyPage Component should not regress 1`] = `
+<div
+  className="jumbotron"
+>
+  <i
+    aria-hidden="true"
+    className="fa fa-ban fa-5x"
+  />
+  <h2>
+    test text
+  </h2>
+</div>
+`;
+
+exports[`Common Components ErrorPage Component should not regress 1`] = `
+<div
+  className="jumbotron"
+>
+  <h1>
+    1
+  </h1>
+  <h3>
+    test error
+  </h3>
+</div>
+`;
+
+exports[`Common Components Header Component should not regress 1`] = `
+<nav>
+  <a
+    aria-current="page"
+    className="active"
+    href="/"
+    onClick={[Function]}
+    style={Object {}}
+  >
+    Home
+  </a>
+   | 
+  <a
+    aria-current={null}
+    href="/authors"
+    onClick={[Function]}
+  >
+    Authors
+  </a>
+  <span>
+     
+  </span>
+  <span>
+    4
+  </span>
+   | 
+  <a
+    aria-current={null}
+    href="/courses"
+    onClick={[Function]}
+  >
+    Courses
+  </a>
+  <span>
+     
+  </span>
+  <span>
+    4
+  </span>
+   | 
+  <a
+    aria-current={null}
+    href="/about"
+    onClick={[Function]}
+  >
+    About
+  </a>
+  <span
+    dots={20}
+    interval={100}
+  >
+    .
+     
+  </span>
+</nav>
+`;
+
+exports[`Common Components LoadingDots Component should not regress 1`] = `
+<span
+  dots={3}
+  interval={300}
+>
+  .
+   
+</span>
+`;
+
+exports[`Common Components SelectInput Component should not regress 1`] = `
+<div
+  className="form-group"
+>
+  <label
+    htmlFor="test button name"
+  >
+    test label
+  </label>
+  <div
+    className="field"
+  >
+    <select
+      className="form-control"
+      name="test button name"
+      onChange={[Function]}
+    >
+      <option
+        value=""
+      />
+    </select>
+  </div>
+</div>
+`;
+
+exports[`Common Components TextInput Component should not regress 1`] = `
+<div
+  className="form-group"
+>
+  <label
+    htmlFor="test input name"
+  >
+    test label
+  </label>
+  <div
+    className="field"
+  >
+    <input
+      className="form-control"
+      name="test input name"
+      onChange={[Function]}
+      type="text"
+    />
+  </div>
+</div>
+`;

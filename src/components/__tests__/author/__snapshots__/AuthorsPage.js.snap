@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Manage Author Page component should render correctly 1`] = `
+<Fragment>
+  <h1
+    key="title"
+  >
+    Authors
+  </h1>
+  <input
+    className="btn btn-primary"
+    key="submit"
+    onClick={[Function]}
+    type="submit"
+    value="Add Author"
+  />
+  <Connect(AuthorList)
+    key="author-list"
+  />
+</Fragment>
+`;

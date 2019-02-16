@@ -1,17 +1,17 @@
-import React, { Component } from "react";
+import React, {PureComponent, Fragment} from "react";
 import { connect } from "react-redux";
 import { Prompt } from "react-router-dom";
 import PropTypes from "prop-types";
 import { bindActionCreators } from "redux";
 import toastr from "toastr";
 import * as courseActions from "../../actions/course";
-import CourseForm from "./CourseForm";
+import TextInput from "../common/TextInput";
+import SelectInput from "../common/SelectInput";
 
-class ManageCoursePage extends Component {
+export class ManageCoursePage extends PureComponent {
   static propTypes = {
     course: PropTypes.object.isRequired,
-    authors: PropTypes.array.isRequired,
-    actions: PropTypes.object.isRequired
+    authors: PropTypes.array.isRequired
   };
   state = {
     course: Object.assign({}, this.props.course),
@@ -24,17 +24,6 @@ class ManageCoursePage extends Component {
     lengthValid: false,
     formUpdated: false
   };
-  componentWillReceiveProps(nextProps) {
-    if (this.props.course.id !== nextProps.course.id) {
-      this.setState({ course: Object.assign({}, nextProps.course) });
-    }
-  }
-  shouldComponentUpdate(nextProps, nextState, nextContext) {
-    if (this.state.course !== nextState.course) {
-      this.setState({ formUpdated: true });
-    }
-    return true;
-  }
 
   validateInput = course => {
     let errors = {};
@@ -118,32 +107,60 @@ class ManageCoursePage extends Component {
   };
 
   render() {
-    return [
+    return <Fragment>
       <Prompt
         key="prompt"
         when={this.state.formUpdated}
         message="The form isn't saved, are you sure you want to leave the page?"
-      />,
-      <CourseForm
-        key="form"
-        course={this.state.course}
-        errors={this.state.errors}
-        allAuthors={this.props.authors}
-        onChange={this.updateCoursesState}
-        onSave={this.saveCourse}
-        loading={this.state.loading}
-        formIsValid={this.state.formIsValid}
       />
-    ];
+      <form className='courseForm'>
+        <h1>Manage Course</h1>
+        <TextInput
+            label="Title"
+            onChange={this.updateCoursesState}
+            name="title"
+            value={this.state.course.title}
+            error={this.state.errors.title}
+            placeholder="Enter Course Title"/>
+        <SelectInput
+            label="Author"
+            onChange={this.updateCoursesState}
+            name="authorId"
+            value={this.state.course.authorId}
+            defaultOption="Select Author"
+            options={this.props.authors}
+            error={this.state.errors.authorId}/>
+        <TextInput
+            label="Category"
+            onChange={this.updateCoursesState}
+            name="category"
+            value={this.state.course.category}
+            error={this.state.errors.category}
+            placeholder="Enter Course Category"/>
+        <TextInput
+            label="Length"
+            onChange={this.updateCoursesState}
+            name="length"
+            value={this.state.course.length}
+            error={this.state.errors.length}
+            placeholder="Enter Course Length"/>
+        <input
+            type="submit"
+            disabled={this.state.loading || !this.state.formIsValid}
+            value={this.state.loading ? 'Saving...' : 'Save'}
+            className="btn btn-primary"
+            onClick={this.saveCourse}/>
+      </form>
+    </Fragment>
   }
 }
 
-const getCourseById = (courses, id) => {
+export const getCourseById = (courses, id) => {
   const course = courses.filter(course => course.id === id);
   if (course.length) return course[0];
   return null;
 };
-const mapStateToProps = (state, ownProps) => {
+export const mapStateToProps = (state, ownProps) => {
   const courseId = ownProps.match.params.id; // get this from path `/course/:id`
   let course = {
     id: "",
@@ -168,7 +185,7 @@ const mapStateToProps = (state, ownProps) => {
     authors: authorsFormattedForDropdown
   };
 };
-const mapDispatchToProps = dispatch => ({
+export const mapDispatchToProps = dispatch => ({
   actions: bindActionCreators(courseActions, dispatch)
 });
 

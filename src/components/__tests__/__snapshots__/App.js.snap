@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App component should render without crashing 1`] = `
+<BrowserRouter>
+  <div
+    className="container"
+  >
+    <Header
+      loading={false}
+      totalAuthors={3}
+      totalCourses={4}
+    />
+    <Switch>
+      <Route
+        component={[Function]}
+        exact={true}
+        path="/"
+      />
+      <Route
+        path="/authors"
+        render={[Function]}
+      />
+      <Route
+        exact={true}
+        path="/author"
+        render={[Function]}
+      />
+      <Route
+        exact={true}
+        path="/author/:id"
+        render={[Function]}
+      />
+      <Route
+        path="/courses"
+        render={[Function]}
+      />
+      <Route
+        exact={true}
+        path="/course"
+        render={[Function]}
+      />
+      <Route
+        exact={true}
+        path="/course/:id"
+        render={[Function]}
+      />
+      <Route
+        component={[Function]}
+        path="/about"
+      />
+      <Route
+        component={[Function]}
+      />
+    </Switch>
+  </div>
+</BrowserRouter>
+`;

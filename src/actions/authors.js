@@ -35,9 +35,6 @@ export function loadAuthors() {
       .then(authors => {
         dispatch(loadAuthorsSuccess(authors));
         dispatch(getNumberOfAuthorsSuccess(authors.length));
-      })
-      .catch(error => {
-        throw error;
       });
   };
 }
@@ -64,16 +61,14 @@ export function saveAuthor(author) {
 
 export function deleteAuthor(id) {
   return function(dispatch) {
-    dispatch(deleteAuthorSuccess(id));
+      dispatch(beginAjaxCall());
     return AuthorApi
         .deleteAuthor(id)
         .then(
+            dispatch(deleteAuthorSuccess(id)),
             dispatch(updateTotalAuthors("delete")),
             toastr.success("Author Deleted.")
-        )
-        .catch(error => {
-          throw error;
-        });
+        );
   };
 }
 
